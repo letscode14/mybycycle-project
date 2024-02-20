@@ -1,0 +1,177 @@
+<section>
+
+  <div class="d-flex align-items-center justify-content-center welcome-tag">
+    <span class="home-welcome-tag">EXPLORE BYCYCLES ONLINE</span>
+    <button
+      onclick="location.href = 'http://localhost:3000/list_products'"
+      class="btn ms-3"
+    ><i class="fs-4 fa-solid fa-arrow-right"></i></button>
+  </div>
+  <div id="home-category">
+    <div id="home-category-container">
+      <div class="row">
+        {{#each catBanners}}
+          <div
+            class="category-banner-image p-0 col-md-2 col-sm-2 col-xs-2 col-4 position-relative"
+          >
+            <a
+              href="/show_product?catName={{this.bannerCat}}"
+              class="banner-link"
+            >
+              <img
+                src="/uploads/{{this.image}}"
+                style="height: 100%; width:100%;"
+                class="filter-image"
+              />
+            </a>
+            <span class="category-banner-tag">{{this.bannerCat}}</span>
+          </div>
+        {{/each}}
+
+      </div>
+
+    </div>
+  </div>
+  <div class="home-policy-banner">
+    <div class="policy-banner">
+      <div class="row">
+        <div class="policy col-md-4 col-sm-4 p-0">
+          <div class="policy-box">
+            <div
+              class="policy-container d-flex align-items-center flex-column justify-content-center"
+            >
+              <div class="d-flex justify-content-center">
+                <i class="fa-solid policy-icon fa-truck"></i>
+
+              </div>
+
+              <label class="mt-3">FASTER DELIVERY</label>
+            </div>
+          </div>
+        </div>
+        <div class="policy col-md-4 col-sm-4 p-0">
+          <div class="policy-box">
+            <div
+              class="policy-container d-flex align-items-center flex-column justify-content-center"
+            >
+              <div class="d-flex justify-content-center">
+                <i class="fa-solid policy-icon fa-lock"></i>
+
+              </div>
+
+              <label class="mt-3">SECURE PAYMENT</label>
+            </div>
+          </div>
+        </div>
+        <div class="policy col-md-4 col-sm-4 p-0">
+          <div class="policy-box">
+            <div
+              class="policy-container d-flex align-items-center flex-column justify-content-center"
+            >
+              <div class="d-flex justify-content-center">
+                <i class="fa-solid policy-icon fa-rotate-left"></i>
+
+              </div>
+
+              <label class="mt-3">RETURN POLICY</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div
+    class="d-flex align-items-center justify-content-center welcome-tag mb-1"
+  >
+    <span class="home-welcome-tag">EXPLORE BYCYCLES IN DIFFERENT BRANDS</span>
+    <button
+      onclick="location.href = 'http://localhost:3000/list_products'"
+      class="btn ms-3"
+    ><i class="fs-4 fa-solid fa-arrow-right"></i></button>
+  </div>
+  <div class="home-brand-container">
+    <div class="brand-container">
+      <div class="row">
+        <div class="col-md-2 px-2 col-sm-4 col-4">
+          <div class="brand">
+            <div class="brand-img">
+              <img
+                style="height: 100%;"
+                src="/images/1-hp-bicycle-brand-rockfire.webp"
+                alt=""
+              />
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-2 px-2 col-sm-4 col-4">
+          <div class="brand">
+            <div class="brand-img">
+              <img
+                style="height: 100%;"
+                src="/images/13-hp-bicycle-brand-ninety-one.webp"
+                alt=""
+              />
+            </div>
+
+          </div>
+        </div><div class="col-md-2 px-2 col-sm-4 col-4">
+          <div class="brand">
+            <div class="brand-img">
+              <img
+                style="height: 100%;"
+                src="/images/16-hp-bicycle-brand-xci.webp"
+                alt=""
+              />
+            </div>
+
+          </div>
+        </div><div class="col-md-2 px-2 col-sm-4 col-4">
+          <div class="brand">
+            <div class="brand-img">
+              <img
+                style="height: 100%;"
+                src="/images/2-hp-bicycle-brand-triad.webp"
+                alt=""
+              />
+            </div>
+
+          </div>
+        </div><div class="col-md-2 px-2 col-sm-4 col-4">
+          <div class="brand">
+            <div class="brand-img">
+              <img
+                style="height: 100%;"
+                src="/images/3-hp-bicycle-brand-waltx.webp"
+                alt=""
+              />
+            </div>
+
+          </div>
+        </div><div class="col-md-2 px-2 col-sm-4 col-4">
+          <div class="brand">
+            <div class="brand-img">
+              <img
+                style="height: 100%;"
+                src="/images/4-hp-bicycle-brand-polygon.webp"
+                alt=""
+              />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view-all d-flex justify-content-center align-items-center">
+    <div class="view-all-button">
+      <button
+        class="btn btn-danger d-flex align-items-center justify-content-center w-100"
+        onclick="location.href = 'http://localhost:3000/list_products'"
+      >VIEW ALL BYCYCLES
+        <i class="fs-4 ms-3 fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>

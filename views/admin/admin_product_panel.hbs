@@ -1,0 +1,163 @@
+<section class="container-user-panel d-flex">
+  <div class="admin-navbar">
+    <div class="sticky-top" style="top: 2%;">
+      <div class="dashboard" onclick="navigatetoPages('dashboard')">
+        <i class="fa fa-th icons" aria-hidden="true"></i>
+        <span class="nav-category">DASHBOARD</span>
+      </div>
+      <div class="user" onclick="navigatetoPages('user')">
+        <i class="fa fa-users icons" aria-hidden="true"></i>
+        <span class="nav-category">USER</span>
+      </div>
+      <div
+        class="products"
+        style="border: 0.5px solid rgb(136, 132, 132);"
+        onclick="navigatetoPages('products')"
+      >
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">PRODUCTS</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('productsSpec')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">SPECIFICATIONS</span>
+      </div>
+      <div class="orders" onclick="navigatetoPages('orders')">
+        <i class="fa-solid fa-box icons"></i>
+        <span class="nav-category">ORDERS</span>
+      </div>
+      <div class="category" onclick="navigatetoPages('category')">
+        <i class="fa-solid fa-list icons"></i>
+        <span class="nav-category">CATEGORY</span>
+      </div>
+      <div class="coupon" onclick="navigatetoPages('coupon')">
+        <i class="fa-solid fa-money-bill icons"></i>
+        <span class="nav-category">COUPON</span>
+      </div>
+      <div class="banner" onclick="navigatetoPages('banner')">
+        <i class="fa-regular fa-object-group icons"></i>
+        <span class="nav-category">BANNER</span>
+      </div>
+      <div class="logout-button">
+        <button class="w-100 btn btn-danger"><span class="log-out">LOG OUT</span><i
+            class="fa-solid text-white fa-right-from-bracket"
+          ></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="divider">
+    <div
+      style="border:0.5px solid rgb(130, 127, 127);  display:inline-block; height:800px;"
+    ></div>
+  </div>
+
+  <div id="left-container">
+    <div>
+      <div>
+        <button
+          id="add-product"
+          onclick="window.location.href='http://localhost:3000/admin_panel/products/add_product'"
+          class="btn mb-3 btn-danger py-2"
+        >Add Products</button>
+      </div>
+      <table id="example" class="table table-striped nowrap" style="width:100%">
+        <thead>
+          <tr>
+            <th style="width: 100px;">PRODUCT NAME</th>
+            <th>PRICE</th>
+            <th>STOCK</th>
+            <th>CATEGORY</th>
+            <th>QTY</th>
+            <th>BRAND</th>
+            <th>USER TYPE</th>
+            <th>ADDED AT</th>
+            <th>UPDATED AT</th>
+            <th>ACTIONS</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each productsData}}
+            <tr>
+              <td>{{this.productName}} </td>
+              <td>{{this.price}}</td>
+              {{#if this.inStock}}
+                <td class="text-success">In Stock</td>
+              {{else}}
+                <td class="text-danger">Out Of Stock</td>
+              {{/if}}
+              <td>{{this.category.categoryName}}</td>
+              <td>{{this.quantity}}</td>
+              <td>{{this.brand}}</td>
+              <td>{{this.userType}}</td>
+              <td>{{this.createdAt}}</td>
+              <td>{{this.updatedAt}}</td>
+              <td><button class="btn"><i
+                    id="edit-product-button"
+                    class="fa-solid fa-pen-to-square"
+                    data-product-id={{this._id}}
+                  ></i></button>
+                <button class="btn"><i
+                    id="product-delete-icon"
+                    class="text-danger fa-solid fa-trash"
+                    data-product-id={{this._id}}
+                  ></i></button>
+                <button class="btn"><i
+                    id="edit-image"
+                    data-product-id={{this._id}}
+                  ><img
+                      src="/images/edit-image.png"
+                      width="100%"
+                    /></i></button></td>
+
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="imageCropModalPrduct"
+    tabindex="-1"
+    aria-labelledby="imageCropModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="imageCropModalLabel">Crop Image</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div style="height:fit-content; width:100%;">
+          <div class="row modal-body-image">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            id="cancel_crop_button"
+            class="btn btn-primary"
+            style="width:fit-content;"
+            data-bs-dismiss="modal"
+          >Cancel</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    id="model-button-crop"
+    hidden
+    class="btn"
+    data-bs-toggle="modal"
+    data-bs-target="#imageCropModalPrduct"
+  ></button>
+
+</section>

@@ -1,0 +1,199 @@
+<section class="container-user-panel d-flex" style="padding-bottom: 250px;">
+  <div class="admin-navbar">
+    <div class="sticky-top" style="top: 2%;">
+      <div
+        class="dashboard"
+        style="border: 0.5px solid rgb(136, 132, 132);"
+        onclick="navigatetoPages('dashboard')"
+      >
+        <i class="fa fa-th icons" aria-hidden="true"></i>
+        <span class="nav-category">DASHBOARD</span>
+      </div>
+      <div class="user" onclick="navigatetoPages('user')">
+        <i class="fa fa-users icons" aria-hidden="true"></i>
+        <span class="nav-category">USER</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('products')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">PRODUCTS</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('productsSpec')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">SPECIFICATIONS</span>
+      </div>
+      <div class="orders" onclick="navigatetoPages('orders')">
+        <i class="fa-solid fa-box icons"></i>
+        <span class="nav-category">ORDERS</span>
+      </div>
+      <div class="category" onclick="navigatetoPages('category')">
+        <i class="fa-solid fa-list icons"></i>
+        <span class="nav-category">CATEGORY</span>
+      </div>
+      <div class="coupon" onclick="navigatetoPages('coupon')">
+        <i class="fa-solid fa-money-bill icons"></i>
+        <span class="nav-category">COUPON</span>
+      </div>
+      <div class="banner" onclick="navigatetoPages('banner')">
+        <i class="fa-regular fa-object-group icons"></i>
+        <span class="nav-category">BANNER</span>
+      </div>
+      <div class="logout-button">
+        <button class="w-100 btn btn-danger"><span class="log-out">LOG OUT</span><i
+            class="fa-solid text-white fa-right-from-bracket"
+          ></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="divider">
+    <div
+      style="border:0.5px solid rgb(130, 127, 127);  display:inline-block; height:100%;"
+    ></div>
+  </div>
+  <div id="left-container">
+
+    <div class="row">
+
+      <div class="col-md-6 col-sm-12 d-flex align-items-center flex-column">
+        <div class="category-tag w-100"><span class="float-start ms-3">CATEGORY
+            SALE</span></div>
+
+        <div
+          class="chart-container d-flex justify-content-center"
+          style="position: relative; height:100%; width:100% ;"
+        >
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <div class="col-md-6 px-4">
+        <div class="category-tag mb-3">TOTAL STATISTICS</div>
+        <div class="statistic">
+          <span class="tag">TOTAL USERS :</span>
+          <label class="tag">{{userCount}}</label>
+        </div>
+        <div class="statistic mt-3">
+          <span class="tag">ACTIVE USERS :</span>
+          <label class="tag">{{activeUser}}</label>
+        </div>
+        <div class="statistic mt-3">
+          <span class="tag">BLOCKED USERS :</span>
+          <label class="tag">{{blockedUsers}}</label>
+        </div>
+        <div class="statistic mt-3">
+          <span class="tag">TOTAL PRODUCTS :</span>
+          <label class="tag">{{productCount}}</label>
+        </div>
+        <div class="statistic mt-3">
+          <span class="tag">TOTAL CATEGORY :</span>
+          <label class="tag">{{categoryCount}}</label>
+        </div>
+      </div>
+      <div class="row px-4 d-flex order-statistics-container">
+        <div class="category-tag">ORDER STATISTICS</div>
+        <div class="col-md-3 order-statistic ms-3">
+          <span class="tag">TOTAL ORDER :</span>
+          <label class="tag">{{allOrder}}</label>
+        </div>
+        <div class="col-md-3 order-statistic ms-3">
+          <span class="tag">CANCELLED ORDER :</span>
+          <label class="tag">{{cancelledOrder}}</label>
+        </div>
+        <div class="col-md-3 order-statistic ms-3">
+          <span class="tag">ACTIVE ORDER :</span>
+          <label class="tag">{{activeOrder}}</label>
+        </div>
+        <div class="col-md-3 order-statistic ms-3">
+          <span class="tag">DELIVERED ORDER :</span>
+          <label class="tag">{{deliveredOrder}}</label>
+        </div>
+        <div class="col-md-3 order-statistic ms-3">
+          <span class="tag">RETURNED ORDER :</span>
+          <label class="tag">{{returnedOrder}}</label>
+        </div>
+      </div>
+
+      <div class="ms-3 mt-4">
+        <div class="category-tag mb-3">SALES STATISTICS</div>
+        <div>
+          <button
+            style="width: 200px;"
+            id="print-sales-report"
+            class="my-2 btn btn-danger text-nowrap"
+          >
+            DOWNLOAD REPORT
+          </button>
+          <div class="col-md-6">
+            <select
+              class="form-select sales-report-print mt-2 mb-4 border border-dark"
+              aria-label="Default select example"
+            >
+              <option id="sale-download-choose" selected>Select the period you
+                need ...</option>
+              <option value="Daily">Daily</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly">Monthly</option>
+              <option value="Year">Year</option>
+            </select>
+            <div class="sales-report-format my-1">
+              <div class="form-check me-2">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  PDF
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                  checked
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  EXCEL
+                </label>
+              </div>
+            </div>
+
+          </div>
+          <div id="salesPrintDateInput">
+
+          </div>
+        </div>
+        <select
+          id="saleType"
+          class="form-select mt-2 mb-4 border border-dark"
+          aria-label="Default select example"
+        >
+          <option id="choose" selected>choose ...</option>
+          <option value="Daily">Daily</option>
+          <option value="Weekly">Weekly</option>
+          <option value="Monthly">Monthly</option>
+          <option value="Year">Year</option>
+        </select>
+        <div id="dateInputs">
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="line-chart-container" style="position: relative;">
+              <canvas id="myLinechart"></canvas>
+            </div>
+          </div>
+          <div class="col-md-3 py-3">
+            <div class="row">
+              <div class="col-md-12 totalsale-statistics">
+                <span class="tag">TOTAL SALES : </span><label
+                  class="tag"
+                >₹{{totalSale}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,156 @@
+<section>
+  <div class="container cart-container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="my-2" style="font-weight: 700; color:gray;">YOUR CART ({{#if
+            count
+          }}{{count}}{{else}}0{{/if}}
+          ITEM)</div>
+        {{#each cartData.products}}
+          <div
+            class="product-cart-container d-flex justify-content-between mb-3 align-items-center"
+            id="container{{this._id}}"
+          >
+            <div>
+
+              <div class="product-cart-name">{{this.Product.productName}}</div>
+
+              <div class="product-cart-framesize">{{this.frameSize}}</div>
+              <div class="product-cart-color">{{this.color}}</div>
+              <div class="mb-2 product-price"><span
+                  class="product-price-tag"
+                >PRICE: </span>
+                ₹{{this.Product.price}}</div>
+              <div
+                style="font-size: 13px; font-weight:600;"
+                class="text-danger"
+                id="remove-cart-button"
+                data-product-id={{this._id}}
+              >REMOVE</div>
+            </div>
+            <div class="mb-5">
+              <div class="product-cart-image">
+                <img
+                  src="/uploads/{{arrayIndex this.Product.images 0}}"
+                  style="width: 100%;"
+                />
+                <div
+                  class="d-flex justify-content-center align-items-center mt-2"
+                ><span
+                    class="btn p-1"
+                    id="change_quantity"
+                    value="1"
+                    data-product-id={{this._id}}
+                    data-id={{this.productId}}
+                  ><i class="fa-solid fa-plus"></i></span><span
+                    style="background-color: #cbcbcb; font-weight:500; font-size:14px; padding:3px 3px; border-radius:5px;"
+                    class="mx-2 text-nowrap"
+                    id="quantity"
+                  >QTY
+                    {{this.quantity}}</span>
+                  <span
+                    class="btn p-1"
+                    data-product-id={{this._id}}
+                    data-id={{this.productId}}
+                    id="change_quantity"
+                    value="-1"
+                  ><i class="fa-solid fa-minus"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="my-2" style="font-weight: 700; color:gray;">YOUR BILLING
+        </div>
+
+        <div class="cart-checkout-container">
+          <div
+            class="grand-total text-danger d-flex justify-content-center"
+          ><span>GRAND TOTAL</span></div>
+          <div class="total-price d-flex justify-content-center">
+            {{#if cartData.grandTotal}}
+
+              <span>₹{{cartData.grandTotal}}</span>
+
+            {{else}}
+              <span>₹ 0</span>
+            {{/if}}
+          </div>
+          <div class="tax d-flex justify-content-center"><span>Inclusive of all
+              Taxes</span></div>
+          <div class="d-flex justify-content-between mt-3"><button
+              onclick="window.location.href='http://localhost:3000/list_products'"
+              class="btn btn-outline-dark continue-shopping"
+            >CONTINUE SHOPPING</button>
+            {{#if cartData.products}}
+              <button
+                class="btn btn-danger proceed-checkout"
+                id="proceed-to-checkout"
+                data-user-id="{{cartData.userId}}"
+              >PROCEED TO CHECKOUT</button>
+            {{else}}
+              <button
+                class="btn btn-danger proceed-checkout cart-empty-checkout"
+              >PROCEED TO CHECKOUT</button>
+            {{/if}}</div>
+        </div>
+
+        <div class="cart-billing-container mt-4">
+          <div class="mt-2 ms-1 billing-details">BILLING DETAILS (ITEM)</div>
+
+          <div class="border my-2"></div>
+          {{#each cartData.products}}
+            <div class="mt-2 mb-3 px-3 product-cart-details"><span>
+
+                {{this.Product.productName}}</span><span>
+                -
+                {{this.frameSize}}</span><span>
+                -
+                {{this.color}}</span></div>
+            <div class="d-flex billing justify-content-between px-3"><span
+              >PRICE:</span><span>₹{{this.Product.price}}</span></div>
+            <div class="d-flex billing justify-content-between px-3"><span>QTY:
+              </span><span>{{this.quantity}}</span></div>
+            <div class="d-flex billing justify-content-between px-3"><span
+              >TOTAL:</span><span>₹{{this.totalPrice}}</span></div>
+            <div class="border my-3"></div>
+          {{/each}}
+
+          {{#if cartData.grandTotal}}
+            <div
+              class="mt-2 mb-3 px-3 d-flex justify-content-between billing-grandtotal"
+            ><span>GRAND TOTAL:</span><span
+              >₹{{cartData.grandTotal}}</span></div>
+
+          {{else}}
+            <div
+              class="mt-2 mb-3 px-3 d-flex justify-content-between billing-grandtotal"
+            ><span>GRAND TOTAL:</span><span>₹ 0</span></div>
+          {{/if}}
+
+        </div>
+        <div class="cart-billing-container mt-4">
+          <div class="d-flex justify-content-between p-2"><button
+              onclick="window.location.href='http://localhost:3000/list_products'"
+              class="btn btn-outline-dark continue-shopping"
+            >CONTINUE SHOPPING</button>
+            {{#if cartData.products}}
+              <button
+                class="btn btn-danger proceed-checkout"
+                data-user-id="{{cartData.userId}}"
+                id="proceed-to-checkout"
+              >PROCEED TO CHECKOUT</button>
+            {{else}}
+              <button
+                class="btn btn-danger proceed-checkout cart-empty-checkout"
+              >PROCEED TO CHECKOUT</button>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

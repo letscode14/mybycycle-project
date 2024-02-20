@@ -1,0 +1,238 @@
+<div
+  class="alert addproducts-msg w-25 position-fixed top-0 m-4 alert-danger"
+  role="alert"
+>
+  All contents must be added
+</div>
+
+<div class="container" id="addproduct-container">
+  <div class="row px-5 pt-2">
+    <form
+      action="/add_product"
+      method="post"
+      class="row g-3"
+      enctype="multipart/form-data"
+    >
+
+      <label class="fs-4 mb-3 h2">Product Details</label>
+
+      <div class="col-md-6">
+        <input
+          type="text"
+          name="productname"
+          placeholder="PRODUCT NAME"
+          class="form-control product-name"
+        />
+      </div>
+      <div class="col-md-6">
+
+        <input
+          type="number"
+          name="price"
+          placeholder="PRICE"
+          class="form-control price"
+        />
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="input-group mb-3">
+            <label
+              class="input-group-text"
+              for="inputGroupSelect01"
+            >Category</label>
+            <select class="form-select" name="category" id="inputGroupSelect01">
+              {{#each category}}
+                <option
+                  selected
+                  value="{{this.categoryName}}"
+                >{{this.categoryName}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <input
+          type="number"
+          name="quantity"
+          placeholder="QTY"
+          class="form-control quantity"
+        />
+      </div>
+      <label class="fs-4 mb-3 mt-5 h2">Product Features
+
+      </label>
+      <div class="col-md-4">
+        <input
+          type="text"
+          name="framesize"
+          placeholder="FRAME SIZE 1"
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          name="framesize"
+          placeholder="FRAME SIZE 2"
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          name="framesize"
+          placeholder="FRAME SIZE 3"
+          class="form-control"
+        />
+      </div>
+      <label class="fs-5">Select color </label>
+      <div class="col-md-1">
+
+        <input
+          type="text"
+          name="color"
+          placeholder="COLOUR 3"
+          class="form-control"
+        />
+      </div><div class="col-md-1">
+
+        <input
+          type="text"
+          name="color"
+          placeholder="COLOUR 2"
+          class="form-control"
+        />
+      </div><div class="col-md-1">
+        <input
+          type="text"
+          name="color"
+          placeholder="COLOUR 1"
+          class="form-control"
+        />
+      </div>
+      <label class="fs-4 mb-3 mt-5 h2">Specifications
+
+      </label>
+      <div class="col-md-4">
+        <input
+          type="text"
+          name="framemtr"
+          placeholder="FRAME MATERIAL"
+          class="form-control frame-mtr"
+        />
+      </div>
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          name="brake"
+          placeholder="BRAKE"
+          class="form-control brake"
+        />
+      </div>
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          placeholder="SUSPENSION"
+          class="form-control suspension"
+          name="suspension"
+        />
+      </div>
+
+      <div class="col-md-4">
+        <input
+          type="number"
+          name="weight"
+          placeholder="WEIGHT"
+          class="form-control weight"
+        />
+      </div>
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          name="gear"
+          placeholder="GEAR"
+          class="form-control gear"
+        />
+      </div>
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          name="brand"
+          placeholder="BRAND"
+          class="form-control brand"
+        />
+      </div>
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          name="usertype"
+          placeholder="USER TYPE"
+          class="form-control user-type"
+        />
+      </div>
+      <label class="fs-4 mb-3 mt-5 h2">Description</label>
+
+      <div class="col-md-4">
+        <input
+          type="text"
+          name="description"
+          placeholder="DESCRIPTION 1"
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4">
+        <input
+          type="text"
+          name="description"
+          placeholder="DESCRIPTION 2"
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4">
+        <input
+          type="text"
+          name="description"
+          placeholder="DESCRIPTION 3"
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4">
+        <input
+          type="text"
+          name="description"
+          placeholder="DESCRIPTION 4"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="fs-4 mb-3 mt-2 h2">Upload multiple Images</label>
+        <input
+          class="form-control formFileMultiple"
+          type="file"
+          id="formFileMultiple"
+          name="files"
+          multiple
+        />
+      </div>
+
+      <div class="col-md-12">
+        <button
+          type="submit"
+          id="add-product"
+          class="btn p-2 mt-3 mb-3 btn-success"
+        >ADD PRODUCT</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

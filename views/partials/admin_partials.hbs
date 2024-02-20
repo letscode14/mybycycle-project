@@ -1,0 +1,174 @@
+<div
+  class="modal fade"
+  id="imageCropModal"
+  tabindex="-1"
+  aria-labelledby="imageCropModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-white" id="imageCropModalLabel">ALERT</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div style="height:fit-content; width:100%;">
+        <div class="row p-2">
+          <span
+            class="d-flex justify-content-center font-weight-bold text-white fs-6 p-2 modal-body-alert"
+          >
+
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel_crop_button"
+          class="btn btn-light"
+          style="width:fit-content;"
+          data-bs-dismiss="modal"
+        >Cancel</button>
+        <button
+          style="width: 110px;"
+          id="confirmAction"
+          type="button"
+          class="btn btn-danger"
+        >Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  id="alert-button"
+  class="btn"
+  hidden
+  data-bs-toggle="modal"
+  data-bs-target="#imageCropModal"
+></button>
+<div
+  class="modal fade"
+  id="alertModal"
+  tabindex="-1"
+  aria-labelledby="imageCropModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-white" id="imageCropModalLabel">ALERT</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div style="height:fit-content; width:100%;">
+        <div class="row p-2">
+
+          <div class="d-flex justify-content-center align-items-center">
+            <div>
+              <span
+                class="font-weight-bold text-white fs-6 px-3 me-2 modal-body-msg"
+              >
+
+              </span>
+            </div>
+            <div class="loader">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel_button"
+          class="btn btn-danger text-white"
+          style="width:fit-content;"
+          data-bs-dismiss="modal"
+        >Cancel</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  id="msg-button"
+  hidden
+  class="btn"
+  data-bs-toggle="modal"
+  data-bs-target="#alertModal"
+></button>
+<!-- -->
+<header>
+  <div
+    class="d-flex justify-content-center position-relative container-user-panel"
+  >
+    <img
+      class="fluid-image"
+      src="/images/specialized-turbo-levo-desktop-banner_d3.jpg"
+      alt=""
+    />
+    <span class="admin-label">
+      {{#if dashboard}}DASHBOARD
+      {{else}}
+        {{#if addProducts}}
+          ADD PRODUCTS
+        {{else}}
+          {{#if products}}
+            PRODUCTS
+          {{else}}
+            {{#if edit}}
+              EDIT PRODUCT
+            {{else}}
+              {{#if category}}
+                CATEGORY
+              {{else}}
+                {{#if editProduct}}
+                  EDIT PRODUCT
+                {{else}}
+                  {{#if spec}}
+                    SPECIFICATIONS
+                  {{else}}
+                    {{#if addCategory}}
+                      ADD CATEGORY
+                    {{else}}
+                      {{#if editCategory}}
+                        EDIT CATEGORY
+                      {{else}}
+                        {{#if orders}}
+                          ORDERS
+                        {{else}}
+                          {{#if banner}}
+                            BANNER
+                          {{else}}
+                            {{#if coupon}}
+                              COUPON
+                            {{else}}
+                              {{#if addCoupon}}
+                                ADD COUPON
+                              {{else}}
+                                USERS
+                              {{/if}}
+                            {{/if}}
+                          {{/if}}
+                        {{/if}}
+                      {{/if}}
+                    {{/if}}
+                  {{/if}}
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      {{/if}}</span>
+  </div>
+</header>

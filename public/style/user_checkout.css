@@ -1,0 +1,124 @@
+.checkout-container {
+  padding: 30px 60px;
+  background-color: #f6f6f6;
+  height: auto;
+  padding-bottom: 50px;
+  transition: 0.5 ease;
+}
+.address-checkout-container {
+  height: auto;
+  padding: 15px 23px 25px 23px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: 0.5 ease;
+}
+.delivery-address-tag {
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.5 ease;
+}
+
+.form-check {
+  width: auto;
+  margin-top: 10px;
+  transition: 0.5 ease;
+}
+
+.checkout-name {
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.5 ease;
+}
+.checkout-name,
+.checkout-address {
+  margin-left: 10px;
+  transition: 0.5 ease;
+}
+.form-checkout-label {
+  font-size: 14px;
+  transition: 0.5 ease;
+}
+.payment-method-container {
+  height: auto;
+  border: 1.2px solid rgb(158, 158, 158);
+  padding: 13px;
+  margin-top: 15px;
+  border-radius: 5px;
+  transition: 0.5 ease;
+}
+
+.checkout-pay-button,
+.checkout-add-address-button {
+  font-weight: 500;
+  margin-top: 13px;
+  transition: 0.5 ease;
+}
+.order-summary-container {
+  padding: 20px 30px;
+  transition: 0.5 ease;
+}
+.checkout-add-address {
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.checkout-add-address-visible {
+  opacity: 1;
+}
+.wallet-checkout-amount span {
+  font-size: 15px;
+  font-weight: 500;
+  color: grey;
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .checkout-container {
+    padding: 10px 20px;
+  }
+  .delivery-address-tag {
+    font-size: 18px;
+  }
+  .checkout-name {
+    font-size: 16px;
+  }
+  .checkout-address {
+    font-size: 14px;
+  }
+  .checkout-name,
+  .checkout-address {
+    margin-left: 3px;
+  }
+  .form-checkout-label {
+    font-size: 13px;
+  }
+  .checkout-pay-button,
+  .checkout-add-address {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+  .checkout-container {
+    padding: 15px 25px;
+  }
+  .delivery-address-tag {
+    font-size: 18px;
+  }
+  .checkout-name {
+    font-size: 16px;
+  }
+  .checkout-address {
+    font-size: 14px;
+  }
+  .checkout-name,
+  .checkout-address {
+    margin-left: 3px;
+  }
+  .form-checkout-label {
+    font-size: 14px;
+  }
+  .checkout-pay-button,
+  .checkout-add-address {
+    font-size: 15px;
+  }
+}

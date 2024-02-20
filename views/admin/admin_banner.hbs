@@ -1,0 +1,95 @@
+<section class="container-user-panel d-flex">
+  <div class="admin-navbar">
+  <div class="sticky-top" style="top: 2%;">
+      <div class="dashboard" onclick="navigatetoPages('dashboard')">
+        <i class="fa fa-th icons" aria-hidden="true"></i>
+        <span class="nav-category">DASHBOARD</span>
+      </div>
+      <div class="user" onclick="navigatetoPages('user')">
+        <i class="fa fa-users icons" aria-hidden="true"></i>
+        <span class="nav-category">USER</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('products')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">PRODUCTS</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('productsSpec')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">SPECIFICATIONS</span>
+      </div>
+      <div class="orders" onclick="navigatetoPages('orders')">
+        <i class="fa-solid fa-box icons"></i>
+        <span class="nav-category">ORDERS</span>
+      </div>
+      <div class="category" onclick="navigatetoPages('category')">
+        <i class="fa-solid fa-list icons"></i>
+        <span class="nav-category">CATEGORY</span>
+      </div>
+      <div class="coupon" onclick="navigatetoPages('coupon')">
+        <i class="fa-solid fa-money-bill icons"></i>
+        <span class="nav-category">COUPON</span>
+      </div>
+      <div
+        class="banner"
+        onclick="navigatetoPages('banner')"
+        style="border: 0.5px solid rgb(136, 132, 132);"
+      >
+        <i class="fa-regular fa-object-group icons"></i>
+        <span class="nav-category">BANNER</span>
+      </div>
+      <div class="logout-button">
+        <button class="w-100 btn btn-danger"><span class="log-out">LOG OUT</span><i
+            class="fa-solid text-white fa-right-from-bracket"
+          ></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="divider">
+    <div
+      style="border:0.5px solid rgb(130, 127, 127);  display:inline-block; height:800px;"
+    ></div>
+  </div>
+
+  <div id="left-container">
+    <div>
+      <button
+        id="add-category"
+        class="btn mb-3 btn-danger py-2"
+        onclick="window.location.href='http://localhost:3000/admin_panel/add_banner'"
+      >Add Banner</button>
+    </div>
+    <table id="example" class="table table-striped nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th>BANNER IMG</th>
+
+          <th>ACTIVE FROM</th>
+          <th>ACTIVE TO</th>
+          <th>STATUS</th>
+          <th>BANNER CAT</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each banners}}
+          <tr>
+            <td style="width: 300px; height:125px;"><img
+                src="/uploads/{{this.image}}"
+                class="w-100"
+              /></td>
+
+            <td>{{this.activeFrom}}</td>
+            <td>{{this.activeTo}}</td>
+            <td>{{#if this.status}}<span
+                  class="text-success"
+                >ACTIVE</span>{{else}}<span
+                  class="text-danger"
+                >EXPIRED</span>{{/if}}</td>
+            <td>{{this.bannerCat}}</td>
+          </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+  </div>
+
+</section>

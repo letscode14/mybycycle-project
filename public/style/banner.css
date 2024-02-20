@@ -1,0 +1,30 @@
+#carouselExampleInterval {
+  width: 90vw;
+  height: auto;
+  transition: 0.5s ease;
+}
+
+.carousel-inner {
+  width: 90vw;
+  height: auto;
+  transition: 0.5s ease;
+}
+
+.carousel-item {
+  width: 90vw;
+  height: auto;
+  transition: 0.5s ease;
+}
+@media (min-width: 300px) and (max-width: 600px) {
+  #carouselExampleInterval {
+    width: 95vw;
+  }
+
+  .carousel-inner {
+    width: 95vw;
+  }
+
+  .carousel-item {
+    width: 95vw;
+  }
+}

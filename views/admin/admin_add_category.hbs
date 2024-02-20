@@ -1,0 +1,38 @@
+<div
+  class="alert addcategory-msg w-25 position-fixed top-0 m-4 alert-danger"
+  role="alert"
+>
+  All contents must be added
+</div>
+<div class="container" id="addcategory-container">
+  <div class="row px-5 pt-2">
+    <form action="/add_category" method="post" class="row g-3">
+      <div>
+        <label class="fs-4 mb-3 h2 me-2">Category Details</label>
+        {{#if categoryExist}}
+          <label class="fs-7 text-danger">CATEGORY ALREADY EXIST</label>
+        {{/if}}
+      </div>
+
+      <div class="col-md-6">
+        <input
+          type="text"
+          name="categoryName"
+          placeholder="CATEGORY NAME"
+          class="form-control add-category"
+        />
+      </div>
+
+      <div class="col-md-12">
+        <button
+          type="submit"
+          id="add-category"
+          class="btn p-2 mt-3 mb-3 btn-success"
+        >ADD CATEGORY</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

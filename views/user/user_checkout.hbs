@@ -1,0 +1,458 @@
+ <div
+  class="alert w-25 checkout-add-address position-fixed m-4 alert-danger"
+  style="top:150px;"
+  role="alert"
+>
+  
+</div>
+
+<section>
+  <div class="container checkout-container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="my-3" style="font-weight: 700; color:gray;">COMPLETE YOUR
+          PURCHASE</div>
+
+        <div class="address-checkout-container">
+          <div>
+            <span class="delivery-address-tag">
+              DELIVERY ADDRESS
+            </span>
+          </div>
+          {{#if address}}
+            {{#each address}}
+            
+              <div class="form-check" id="form-checkout" >
+                <input
+                  data-address-id="{{this._id}}"
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  {{#if this.isPrimary }}
+                  checked
+                  {{else}} 
+                  {{/if}}
+                />
+                <label class="checkout-name">{{../userInfo.fname}} {{../userInfo.lname}}</label>
+                <label
+                  class="form-check-label checkout-address"
+                  for="flexRadioDefault1"
+                >
+                  {{this.homeAddress}},
+                  {{this.locality}},
+                  {{this.city}},
+                  {{this.district}},
+                  {{this.state}},
+                  {{this.postalCode}}
+
+                </label>
+                {{#each this.phone}}
+                <div class="checkout-address">{{this}}</div>
+                {{/each}}
+              </div>
+            {{/each}}
+          {{else}}
+          <div class="form-check" id="form-checkout" >
+            <span class="text-danger" style="font-weight:600;" id="address-not-add">ADDRESS NOT
+              ADDED
+            </span>
+          </div>
+        {{/if}}
+
+        </div>
+
+        <div class="address-checkout-container mt-3">
+          <div>
+            <span class="delivery-address-tag">
+              ADD ADDRESS
+            </span>
+            <div class="row">
+              <form  class="row m-0" data-user-id="{{userInfo._id}}" id="checkout-form">
+              <div class="mb-2 col-md-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label"
+                >Home/Street Address</label>
+                <input
+                  name="homeAddress"
+                  type="text"
+                  class="form-control home-address"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-2 col-md-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label"
+                >Locality</label>
+                <input
+                  type="text"
+                  name="locality"
+                  class="form-control locality"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="col-md-6 mb-2 col-sm-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label"
+                >State</label>
+                <select class="form-select" name="state" aria-label="Default select example">
+
+                  <option selected>Kerala</option>
+                  <option>Tamil Nadu</option>
+                  <option>Karnataka</option>
+                  <option>Andhra Pradesh</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Gujarat</option>
+                  <option>Delhi</option>
+                  <option>Rajasthan</option>
+
+                </select>
+              </div>
+              <div class="col-md-6 mb-2 col-sm-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label"
+                >District</label>
+                <select class="form-select" name="district" aria-label="Default select example">
+                  <option>Kasargod</option>
+                  <option>Kannur</option>
+                  <option>Wayanad</option>
+                  <option>Kozhikode</option>
+                  <option>Malapuram</option>
+                  <option selected>Palakkad</option>
+                  <option>Trissur</option>
+                  <option>Ernamkulam</option>
+                  <option>kollam</option>
+                  <option>Pathanamthitta</option>
+                  <option>Alapuzha</option>
+                </select>
+              </div>
+              <div class="mb-2 col-md-6 col-sm-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label"
+                >City</label>
+                <input
+                name="city"
+
+                  type="text"
+                  class="form-control city"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-2 col-md-6 col-sm-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label"
+                >Postal Code</label>
+                <input
+                 name="postalCode"
+                  type="number"
+                  class="form-control postal-code"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-2 col-md-6 col-sm-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label "
+                >Phone 1</label>
+                <input
+                  name="phone"
+                  type="text"
+                  class="form-control phone"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-2 col-md-6 col-sm-12">
+                <label
+                  for="exampleInputEmail1"
+                  class="form-label form-checkout-label "
+                >Phone 2</label>
+                <input
+                  name="phone"
+                  type="text"
+                  class="form-control phone"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <input type="text" value="{{userInfo._id}}" name="userId" hidden>
+              
+                
+            </div>
+            </form>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button
+                
+                class="btn btn-danger p-2 checkout-add-address-button"
+                >ADD ADDRESS</button>
+              </div>
+          </div>
+
+        </div>
+        <div class="address-checkout-container mt-3">
+          <div class="row">
+            <span class="delivery-address-tag">
+              CHOOSE PAYMENT METHOD
+            </span>
+             <div class="payment-method-container d-flex justify-content-between align-items-center">
+              <div class="form-check m-0">
+                {{#if buyNow}}
+                                <input
+                  class="form-check-input"
+                  type="checkbox"
+                   value="WALLET"
+                   name="wallet"
+                   id="wallet-checkout-buynow"
+                   data-user-id="{{userInfo._id}}"
+                />
+                {{else}}
+                
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                   value="WALLET"
+                   name="wallet"
+                   id="wallet-checkout"
+                   data-user-id="{{userInfo._id}}"
+                />
+                {{/if}}
+                <label class="form-check-label fs-6" for="flexRadioDefault1">
+                 Use your Wallet Amount
+                </label>
+                 <div class="mt-3 wallet-use-container">
+                  
+                 </div>
+              </div>
+              <div class="wallet-checkout-amount">
+                <span>Wallet balance :</span>
+                 <span class="wallet-chekout-original-balance">₹{{balance}} </span>
+                 <div style="font-size: 0.7rem;"><i class="fa-solid fa-triangle-exclamation"></i><span  style="font-size: 0.7rem;">You can only use Upto 80%</span></div>
+              </div>
+            </div>
+            <div class="payment-method-container ">
+              <div class="form-check m-0">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios1"
+                  value="COD"
+                   checked
+                />
+                <label class="form-check-label fs-6" for="flexRadioDefault1">
+                  Cash On Delivery
+                </label>
+              </div>
+            </div>
+            <div class="payment-method-container">
+              <div class="form-check m-0">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios1"
+                  value="RAZORPAY"
+                  />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  <img src="/images/razorpay.svg"  style="height: 25px;">
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <!-- for the coupon-->
+        <div class="my-3" style="font-weight: 700; color:gray;">SUMMARY</div>
+        <div class="address-checkout-container">
+          <span class="delivery-address-tag">
+            ADD COUPON
+          </span>
+           <div class="my-2 border"></div>
+            <div class="mb-2 ">
+             <label
+                    for="exampleInputEmail1"
+                    class="form-label form-checkout-label"
+              >Coupon Code
+             </label>
+              <input
+                  name="coupon"
+                   type="text"
+                    class="form-control city"
+                    id="chekout-coupon-code"
+                    aria-describedby="emailHelp"
+                />
+            </div>
+             {{#if buyNow}}
+            <button
+              data-user-id={{userInfo._id}}
+              id="add-coupon-button-buynow"
+              class="btn  btn-outline-dark checkout-pay-button">
+              ADD COUPON
+            </button>
+             <button
+              data-user-id={{userInfo._id}}
+              id="remove-coupon-button-buynow"
+              class="btn  btn-danger checkout-pay-button">
+              REMOVE COUPON
+            </button>
+             {{else}}
+            <button
+              data-user-id={{userInfo._id}}
+              id="add-coupon-button"
+              class="btn  btn-outline-dark checkout-pay-button">
+              ADD COUPON
+            </button>
+             <button
+              data-user-id={{userInfo._id}}
+              id="remove-coupon-button"
+              class="btn  btn-danger checkout-pay-button">
+              REMOVE COUPON
+            </button>
+             {{/if}}
+           
+
+        </div>
+        <!-- -->
+        <div class="address-checkout-container mt-3">
+          <div class="row">
+
+            <span class="delivery-address-tag">
+              ORDER SUMMARY
+            </span>
+            <div class="order-summary-container">
+              <div class="d-flex justify-content-between">
+                 <span>Subtotal</span>
+                  <span>₹{{total}}</span>
+              </div>
+               <div class=" mt-2 d-flex justify-content-between">
+                  <span>Coupon</span>
+                  <span class="coupon-discount">₹ 0</span>
+                </div>
+                <div id="wallet-checkout-detail" class=" mt-2 d-flex justify-content-between">
+
+                </div>
+             </div>
+            <div class="my-2 border"></div>
+            <div class="d-flex justify-content-between billing-grandtotal"> <span
+              >GRAND TOTAL:</span><span class="grand-total">₹{{total}}</span></div>
+            <div class="my-2 border"></div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              {{#if buyNow}}
+              <button
+                type="button"
+                class="btn btn-danger p-2 checkout-pay-button"
+                id="place-order-buynow"
+                data-user-id="{{userInfo._id}}"
+              >PLACE ORDER</button>
+              {{else}}
+               <button
+                type="button"
+                class="btn btn-danger p-2 checkout-pay-button"
+                id="place-order"
+                data-user-id="{{userInfo._id}}"
+              >PLACE ORDER</button>
+              {{/if}}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script>
+  const form = document.querySelector('form')
+  const homeAddress = document.querySelector('.home-address')
+  const city = document.querySelector('.city')
+  const postalCode = document.querySelector('.postal-code')
+  const locality = document.querySelector('.locality')
+  const phone = document.querySelectorAll('.phone')
+  const checkoutAddAddressbutton = document.querySelector('.checkout-add-address-button')
+  const alertMsg  =document.querySelector('.checkout-add-address')
+
+  const textFieldRegex = /^[a-zA-Z0-9\s]+$/;
+  const numberRegex = /^\d+$/;
+  const hasCountryCode = /^\+\d+/;
+  const isPhoneNumberValid = /^\+\d{12}$/;
+
+  checkoutAddAddressbutton.addEventListener('click' ,(event) => {
+  event.preventDefault()
+      const isPhone = Array.from(phone).some(
+    (input) => input.value.trim() !== ""
+  );
+  const isCountrycode = Array.from(phone).some(
+    (input) => hasCountryCode.test(input.value.trim())
+  );
+  const istenDigit = Array.from(phone).some(
+    (input) => isPhoneNumberValid.test(input.value.trim())
+  );
+  if(
+    homeAddress.value.trim() ==="" ||
+    locality.value.trim() ==="" ||
+    city.value.trim() ==="" ||
+    postalCode.value.trim() ===""){
+      showAlert(alertMsg, 'All field Must be Added' ,event)
+      
+    }else{
+     if(textFieldRegex.test(homeAddress.value.trim())&&
+        textFieldRegex.test(locality.value.trim())&&
+         textFieldRegex.test(city.value.trim())){
+          if(numberRegex.test(postalCode.value.trim())){
+            if(isPhone){
+              if(isCountrycode){
+                if(istenDigit){
+                   submitcheckoutAddressForm()
+                }else{
+                    showAlert(alertMsg, 'Enter a valid Phone Number' ,event)
+                }
+
+              }else{
+                showAlert(alertMsg, 'Phone number Must have Country Code' ,event)
+              }
+            }else{
+                showAlert(alertMsg, 'Add atleast One Phone number' ,event)
+            }
+
+          }else{
+             showAlert(alertMsg, 'Enter Valid Postal Code' ,event)
+          }
+
+     }else{
+       showAlert(alertMsg, 'The text field should only contain alphabets and number' ,event)
+
+     }
+    }
+    
+  })
+
+  function showAlert(element ,msg ,e){
+     e.preventDefault();
+    element.innerHTML = msg
+    element.classList.add('checkout-add-address-visible')
+    setTimeout(() => {
+      element.classList.remove('checkout-add-address-visible')
+    } ,2000)
+     setTimeout(() => {
+    element.innerHTML = "";
+  }, 2500);
+  }
+  
+
+
+
+  
+
+</script>

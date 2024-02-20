@@ -1,0 +1,87 @@
+<section>
+  <div class="container wallet-history-container">
+    <div class="my-3" style="font-weight: 700; color:gray;">WALLET HISTORY</div>
+    <div class="history-container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <span class="wallet-balance-history me-2"><i
+              class="fa-solid fa-wallet"
+            ></i></span>
+          <span class="wallet-balance-history">WALLET BALANCE: ₹
+            {{balance}}</span>
+        </div>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-outline-secondary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-up-down"></i>
+            <span class="sort-criteria">SORT</span>
+          </button>
+          <ul class="dropdown-menu">
+            <button
+              id="wallet-history-filter"
+              class="btn btn-ouline-secondary w-100"
+              data-criteria-value="15DAYS"
+              data-user-id="{{userInfo._id}}"
+            >Past 15 days</button>
+            <button
+              id="wallet-history-filter"
+              class="btn btn-ouline-secondary w-100"
+              data-criteria-value="30DAYS"
+              data-user-id="{{userInfo._id}}"
+            >Past 30 days</button>
+            <button
+              id="wallet-history-filter"
+              class="btn btn-ouline-secondary w-100"
+              data-criteria-value="6MONTH"
+              data-user-id="{{userInfo._id}}"
+            >Past 6 months</button>
+            <button
+              id="wallet-history-filter"
+              class="btn btn-ouline-secondary w-100"
+              data-criteria-value="1YEAR"
+              data-user-id="{{userInfo._id}}"
+            >Past 1 year</button>
+            <div>
+              <button
+                id="wallet-history-filter"
+                class="btn btn-ouline-secondary w-100"
+                data-criteria-value="FILTER"
+                data-user-id="{{userInfo._id}}"
+              >filter</button>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="my-2 wallet-hisory-list">
+        {{#each walletHistory}}
+          <div class="border"></div>
+          <div class="d-flex justify-content-between py-3">
+            <div class="wallet-details">
+              <span>
+                {{#ifEquals this.transactionType "Deposit"}}<i
+                    class="text-success fa-solid fa-angles-down withdrawal-wallet"
+                  ></i>{{else}}<i
+                    class="text-danger fa-solid fa-angles-up withdrawal-wallet"
+                  ></i>{{/ifEquals}}</span>
+              <span class="date-tag-deposit">{{this.date}}</span>
+              <span class="wallet-trans-type">{{this.transactionType}}</span>
+            </div>
+            <div class="wallet-details">
+              {{#ifEquals this.transactionType "Deposit"}}
+                <span class="text-success">+ ₹{{this.amount}}</span>
+              {{else}}
+                <span class="text-danger">- ₹{{this.amount}}</span>
+              {{/ifEquals}}
+            </div>
+          </div>
+        {{/each}}
+
+      </div>
+
+    </div>
+  </div>
+</section>

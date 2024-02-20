@@ -1,0 +1,233 @@
+<section>
+  <div class="container view-order-container">
+    <div class="row">
+      <div class="my-3" style="font-weight: 700; color:gray;">VIEW ORDER</div>
+      <div class="view-order">
+        <div class="order-details">Order Details</div>
+        <div class="order-details-container row">
+          <div class="col-md-9">
+            <label>Order Date </label><span>:{{orderData.orderedAt}}</span><br
+            />
+            <label>Order ID </label><span class="text-nowrap">:
+              {{orderData.orderId}}</span><br />
+            <label>Order Total </label><span>: ₹{{orderData.orderTotal}}
+
+            </span><br />
+            <label>Grand Total </label><span>: ₹{{orderData.grandTotal}}</span><br
+            {{#if orderData.wallet}}
+            /><label>Wallet Amount </label><span class="text-danger">: -₹{{orderData.wallet}}</span> <br>
+            {{/if}}
+
+            {{#ifEquals orderData.orderStatus "CANCELLATION REQUESTED"}}
+              <label>Order Status </label><span
+                class="text-danger"
+                style="font-weight: 600;"
+              >: {{orderData.orderStatus}}</span>
+            {{else}}
+              {{#ifEquals orderData.orderStatus "CANCELLED"}}
+                <label>Order Status </label><span
+                  class="text-danger"
+                  style="font-weight: 600;"
+                >: {{orderData.orderStatus}}</span>
+              {{else}}
+                {{#ifEquals orderData.orderStatus "DELIVERED"}}
+                  <label>Order Status </label><span
+                    class="text-success"
+                    style="font-weight: 600;"
+                  >: {{orderData.orderStatus}}</span>
+                {{else}}
+                  {{#ifEquals orderData.orderStatus "PENDING"}}
+                    <label>Order Status </label><span
+                      class="text-warning"
+                      style="font-weight: 600;"
+                    >: {{orderData.orderStatus}}</span>
+                  {{else}}
+                    {{#ifEquals orderData.orderStatus "RETURNED"}}
+                      <label>Order Status </label><span
+                        class="text-danger"
+                        style="font-weight: 600;"
+                      >: {{orderData.orderStatus}}</span>
+                    {{else}}
+                      <label>Order Status </label><span
+                        class="text-success"
+                        style="font-weight: 600;"
+                      >: {{orderData.orderStatus}}</span>
+                    {{/ifEquals}}
+                  {{/ifEquals}}
+                {{/ifEquals}}
+
+              {{/ifEquals}}
+
+            {{/ifEquals}}
+          </div>
+          {{#if orderData.invoiceDownload}}
+            <div class="col-md-3 text-end">
+              <a
+                id="downloadInvoiceBtn"
+                class="btn btn-danger"
+                href="{{orderData.invoiceDownload}}"
+                download
+              >
+                DOWNLOAD INVOICE
+              </a>
+
+            </div>
+          {{/if}}
+        </div>
+        <div class="order-details my-3">Product Informations</div>
+        <div class="product-information row">
+          <div class="col-md-2">
+            <div class="view-order-image">
+              <img
+                src="/uploads/{{arrayIndex orderData.productInfo.images 0}}"
+                style="height: 100%;"
+              />
+            </div>
+            <div class="view-order-quantity mt-3">
+              <span class="order-quantity text-center">QTY
+                {{orderData.quantity}}</span>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div
+              class="view-product-name"
+            >{{orderData.productInfo.productName}}</div>
+            <div
+              class="view-order-variant"
+            >{{orderData.variant.frameSize}}</div>
+            <div class="view-order-variant">{{orderData.variant.color}}</div>
+            <div class="view-order-price">Price :₹{{orderData.productInfo.price}}</div>
+
+          </div>
+          <div class="col-md-3 view-order-button">
+
+            {{#ifEquals orderData.orderStatus "CANCELLED"}}
+              <button
+                class="btn btn-danger mt-3 disabled"
+                id="cancel-product-button"
+                data-order-id="{{orderData._id}}"
+              >CANCEL PRODUCT</button>
+            {{else}}
+              {{#ifEquals orderData.orderStatus "RETURNED"}}{{/ifEquals}}
+            {{/ifEquals}}
+            {{#ifEquals orderData.orderStatus "ACTIVE"}}
+              {{#unlessEquals orderData.orderStage "CANCELLATION REQUESTED"}}
+
+                <button
+                  class="btn btn-danger mt-3"
+                  id="cancel-product-button"
+                  data-order-id="{{orderData._id}}"
+                >CANCEL PRODUCT</button>
+              {{else}}
+
+                <button
+                  class="btn btn-danger mt-3 disabled"
+                  id="cancel-product-button"
+                  data-order-id="{{orderData._id}}"
+                >CANCEL PRODUCT</button>
+
+              {{/unlessEquals}}
+            {{/ifEquals}}
+
+            {{#ifEquals orderData.orderStatus "DELIVERED"}}
+              {{#unlessEquals orderData.orderStage "RETURN REQUESTED"}}
+                <button
+                  class="btn btn-danger mt-3"
+                  id="return-product-button"
+                  data-order-id="{{orderData._id}}"
+                >RETURN PRODUCT</button>
+              {{else}}
+                <button
+                  class="btn btn-danger disabled mt-3"
+                  id="return-product-button"
+                  data-order-id="{{orderData._id}}"
+                >RETURN PRODUCT</button>
+              {{/unlessEquals}}
+            {{/ifEquals}}
+            {{#ifEquals orderData.orderStatus "PENDING"}}
+              <button
+                class="btn btn-danger mt-3"
+                id="complete-payment-button"
+                data-order-id="{{orderData._id}}"
+              >PAY ₹{{orderData.orderTotal}}</button>
+
+            {{/ifEquals}}
+
+            <button
+              class="btn btn-outline-dark mt-2"
+              id="track-product-button"
+              data-order-id="{{orderData._id}}"
+            >TRACK PRODUCT</button>
+
+          </div>
+
+        </div>
+        <div class="order-details my-3">Payment Details</div>
+        <div class="payment-information">
+          <span class="payment-method-tag">Payment Method</span>
+          <div class="my-3" style="border: 0.6px solid #AEABAB;"></div>
+          <span class="payment-method mt-4">{{orderData.paymentMethod}}</span>
+        </div>
+        <div class="order-details my-3">Delivery Details</div>
+        <div class="delivery-information">
+          <label
+            for=""
+          >{{orderData.addressInfo.homeAddress}},{{orderData.addressInfo.locality}}</label><br
+          />
+          <label
+            for=""
+          >{{orderData.addressInfo.city}},{{orderData.addressInfo.district}}</label><br
+          />
+          <label for="">{{orderData.addressInfo.state}},
+            {{orderData.addressInfo.postalCode}}</label>
+
+        </div>
+        <div>
+
+          {{#ifEquals orderData.orderStatus "CANCELLED"}}
+            <button
+              class="btn btn-danger mt-3 disabled"
+              id="cancel-product-button"
+            >CANCEL PRODUCT</button>
+          {{/ifEquals}}
+          {{#ifEquals orderData.orderStatus "RETURNED"}}{{/ifEquals}}
+          {{#ifEquals orderData.orderStatus "ACTIVE"}}
+            {{#unlessEquals orderData.orderStage "CANCELLATION REQUESTED"}}
+
+              <button
+                class="btn btn-danger mt-3"
+                id="cancel-product-button"
+                data-order-id="{{orderData._id}}"
+              >CANCEL PRODUCT</button>
+            {{else}}
+              <button
+                class="btn btn-danger mt-3 disabled"
+                id="cancel-product-button"
+              >CANCEL PRODUCT</button>
+
+            {{/unlessEquals}}
+          {{/ifEquals}}
+
+          {{#ifEquals orderData.orderStatus "DELIVERED"}}
+            {{#unlessEquals orderData.orderStage "RETURN REQUESTED"}}
+              <button
+                class="btn btn-danger mt-3"
+                id="return-product-button"
+                data-order-id="{{orderData._id}}"
+              >RETURN PRODUCT</button>
+            {{else}}
+              <button
+                class="btn btn-danger disabled mt-3"
+                id="return-product-button"
+                data-order-id="{{orderData._id}}"
+              >RETURN PRODUCT</button>
+            {{/unlessEquals}}
+          {{/ifEquals}}
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

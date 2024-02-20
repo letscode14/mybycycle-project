@@ -1,0 +1,44 @@
+.track-order-container {
+  background-color: #f6f6f6;
+  height: auto;
+  min-height: 100vh;
+}
+.track-container {
+  padding: 60px 60px;
+}
+.track-order-box {
+  height: auto;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: 0.5 ease;
+}
+.track-order-image {
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  height: 140px;
+  width: 140px;
+}
+.progress {
+  position: relative;
+  display: inline-block;
+  width: 20px; /* Width of the vertical progress bar */
+}
+.tick-mark {
+  position: absolute;
+  font-size: 20px;
+  left: 24px;
+  z-index: 1;
+}
+.track-order-tag {
+  font-weight: 600;
+  font-size: 22px;
+}
+.track-order-stage {
+  font-weight: 500;
+  font-size: 16px;
+}
+

@@ -1,0 +1,269 @@
+<section class="container-user-panel d-flex" style="padding-bottom: 250px;">
+  <div class="admin-navbar">
+    <div class="sticky-top" style="top: 2%;">
+      <div class="dashboard" onclick="navigatetoPages('dashboard')">
+        <i class="fa fa-th icons" aria-hidden="true"></i>
+        <span class="nav-category">DASHBOARD</span>
+      </div>
+      <div class="user" onclick="navigatetoPages('user')">
+        <i class="fa fa-users icons" aria-hidden="true"></i>
+        <span class="nav-category">USER</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('products')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">PRODUCTS</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('productsSpec')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">SPECIFICATIONS</span>
+      </div>
+      <div
+        class="orders"
+        onclick="navigatetoPages('orders')"
+        style="border: 0.5px solid rgb(136, 132, 132);"
+      >
+        <i class="fa-solid fa-box icons"></i>
+        <span class="nav-category">ORDERS</span>
+      </div>
+      <div class="category" onclick="navigatetoPages('category')">
+        <i class="fa-solid fa-list icons"></i>
+        <span class="nav-category">CATEGORY</span>
+      </div>
+      <div class="coupon" onclick="navigatetoPages('coupon')">
+        <i class="fa-solid fa-money-bill icons"></i>
+        <span class="nav-category">COUPON</span>
+      </div>
+      <div class="banner" onclick="navigatetoPages('banner')">
+        <i class="fa-regular fa-object-group icons"></i>
+        <span class="nav-category">BANNER</span>
+      </div>
+      <div class="logout-button">
+        <button class="w-100 btn btn-danger"><span class="log-out">LOG OUT</span><i
+            class="fa-solid text-white fa-right-from-bracket"
+          ></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="divider">
+    <div
+      style="border:0.5px solid rgb(130, 127, 127);  display:inline-block; height:100%;"
+    ></div>
+  </div>
+
+  <div id="left-container">
+
+    <table id="example" class="table table-striped nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th>USER NAME</th>
+          <th style="width:150px;">ORDER ID</th>
+          <th>PRODUCT</th>
+          <th>VARIANT</th>
+          <th>QTY</th>
+          <th>PY METH</th>
+          <th>GRAND TOTAL</th>
+          <th>ORDER STAGE</th>
+          <th>ORDER STATUS</th>
+          <th style="width:150px;">ORDER STAGE</th>
+          <th>CAN REASON</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each orders}}
+          <tr>
+
+            <td>{{this.userInfo.fname}} {{this.userInfo.lname}}</td>
+            <td class="text-wrap">{{this.orderId}}</td>
+            <td>{{this.productInfo.productName}}</td>
+            <td>Size:
+              {{this.variant.frameSize}}
+              <br />color:
+              {{this.variant.color}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.paymentMethod}}</td>
+            <td>₹{{this.grandTotal}}</td>
+            <!--  
+
+            -->
+            {{#ifEquals this.orderStage "PREPARING FOR DISPATCH"}}
+              <td
+                class="text-wrap text-success"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "PAYMENT PENDING"}}
+              <td
+                class="text-wrap text-warning"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "DISPATCHED"}}
+              <td
+                class="text-wrap text-success"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "ORDER SHIPPED"}}
+              <td
+                class="text-wrap text-success"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "OUT FOR DELIVERY"}}
+              <td
+                class="text-wrap text-success"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "DELIVERED"}}
+              <td
+                class="text-wrap text-success"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "CANCELLED"}}
+              <td
+                class="text-wrap text-danger"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "CANCELLATION REQUESTED"}}
+              <td
+                class="text-wrap text-danger"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "CANCELLED DUE TO PAYMENT NOT DONE"}}
+              <td
+                class="text-wrap text-danger"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals this.orderStage "RETURN REQUESTED"}}
+              <td
+                class="text-wrap text-warning"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+            {{#ifEquals orderStage "RETURNED"}}
+              <td
+                class="text-wrap text-danger"
+                style="font-weight: 600;"
+              >{{this.orderStage}}</td>
+            {{/ifEquals}}
+
+            <!--  
+
+            -->
+            {{#ifEquals this.orderStatus "ACTIVE"}}
+              <td
+                class="text-success"
+                style="font-weight: 600;"
+              >{{this.orderStatus}}</td>
+            {{else}}
+              {{#ifEquals this.orderStatus "CANCELLED"}}
+                <td
+                  class="text-danger"
+                  style="font-weight: 600;"
+                >{{this.orderStatus}}</td>
+              {{else}}
+                {{#ifEquals this.orderStatus "PENDING"}}
+                  <td
+                    class="text-success"
+                    style="font-weight: 600;"
+                  >{{this.orderStatus}}</td>
+                {{else}}
+                  {{#ifEquals this.orderStatus "DELIVERED"}}
+                    <td
+                      class="text-success"
+                      style="font-weight: 600;"
+                    >{{this.orderStatus}}</td>
+                  {{else}}
+                    {{#ifEquals orderStatus "RETURNED"}}
+                      <td
+                        class="text-danger"
+                        style="font-weight: 600;"
+                      >{{this.orderStatus}}</td>
+                    {{/ifEquals}}
+                  {{/ifEquals}}
+                {{/ifEquals}}
+              {{/ifEquals}}
+
+            {{/ifEquals}}
+
+            <td>
+              <div style="width: min-width:280px;" class="btn-group w-100">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="true"
+                  aria-expanded="false"
+                >
+                  UPDATE ORDERS
+                </button>
+                <ul class="dropdown-menu">
+                  <li class="p-1">
+                    <button
+                      id="admin-cancel-order"
+                      data-order-id="{{this._id}}"
+                      class="btn btn-danger w-100"
+                    >Cancel order</button>
+                  </li>
+                  <li class="p-1">
+                    <button
+                      data-order-id="{{this._id}}"
+                      class="btn btn-success w-100"
+                      id="order-stage"
+                      data-order-stage="DISPATCHED"
+                    >Dispatch Order</button>
+
+                  </li>
+                  <li class="p-1">
+                    <button
+                      data-order-id="{{this._id}}"
+                      class="btn btn-success w-100"
+                      id="order-stage"
+                      data-order-stage="ORDER SHIPPED"
+                    >Ship order</button>
+
+                  </li>
+                  <li class="p-1">
+                    <button
+                      data-order-id="{{this._id}}"
+                      class="btn btn-success w-100"
+                      id="order-stage"
+                      data-order-stage="OUT FOR DELIVERY"
+                    >Out for Delivery</button>
+
+                  </li>
+                  <li class="p-1">
+                    <button
+                      data-order-id="{{this._id}}"
+                      class="btn btn-success w-100"
+                      id="order-stage"
+                      data-order-stage="DELIVERED"
+                    >Delivered</button>
+
+                  </li>
+                  {{#ifEquals orderStage "RETURN REQUESTED"}}
+                    <li class="p-1">
+                      <button
+                        data-order-id="{{this._id}}"
+                        class="btn btn-warning w-100"
+                        id="return-order"
+                        data-order-stage="RETURNED"
+                      >Return </button>
+                    </li>
+                  {{/ifEquals}}
+                </ul>
+              </div>
+            </td>
+            <td>{{this.reason}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+</section>

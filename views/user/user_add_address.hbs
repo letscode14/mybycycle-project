@@ -1,0 +1,210 @@
+<div
+  class="alert edit-profile-alert w-25 position-fixed m-4 alert-danger"
+  style="top:150px;"
+  role="alert"
+>
+
+</div>
+<section>
+  <div
+    class="container edit-user-from-container mb-5"
+    style="background-color:  #f6f6f6; height:auto; padding-bottom:50px; min-height:100vh;"
+  >
+    <div class="row edit-user-form-container">
+      <div class="my-2 edit-profile-tag">ADD ADDRESS</div>
+
+      <form
+        action="/user_add_address/{{userInfo._id}}"
+        method="post"
+        class="row addAddress-form"
+       
+      >
+
+        <div class="col-md-12 mt-3">
+          <label for="exampleInput" class="form-label">Home/Street Address</label>
+          <input
+            type="text"
+            id="street-address"
+          
+            class="form-control"
+            name="streetaddress"
+          />
+        </div>
+        <div class="col-md-12 mt-3">
+          <label for="exampleInput" class="form-label">Locality</label>
+          <input
+            type="text"
+            id="locality"
+          
+            class="form-control"
+            name="locality"
+          />
+        </div>
+        <div class="col-md-6 mt-3">
+          <div class="row">
+            <label for="exampleInput" class="form-label">State</label>
+            <div class="input-group">
+              <select class="form-select" name="state" id="inputGroupSelect01">
+                <option selected>Kerala</option>
+                <option>Tamil Nadu</option>
+                <option>Karnataka</option>
+                <option>Andra Pradesh</option>
+                <option>Madhya Pradesh</option>
+                <option>Goa</option>
+                <option>Gujarat</option>
+                <option>Punjab</option>
+                <option>Rajasthan</option>
+                <option>Uttar Pradesh</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-3">
+          <div class="row">
+            <label for="exampleInput" class="form-label">District</label>
+            <div class="input-group">
+              <select
+                class="form-select"
+                name="district"
+                id="inputGroupSelect01"
+              >
+
+                <option>Kasargod</option>
+                <option>Kannur</option>
+                <option>Wayanad</option>
+                <option>Kozhikode</option>
+                <option>Malapuram</option>
+                <option selected>Palakkad</option>
+                <option>Trissur</option>
+                <option>Ernamkulam</option>
+                <option>kollam</option>
+                <option>Pathanamthitta</option>
+                <option>Alapuzha</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-3">
+          <label for="exampleInput" class="form-label">City</label>
+          <input
+            type="text"
+            id="city"
+          
+            class="form-control"
+            name="city"
+          />
+        </div>
+        <div class="col-md-6 mt-3">
+          <label for="exampleInput" class="form-label">Postal Code</label>
+          <input
+            type="number"
+            id="postalcode"
+           
+            class="form-control"
+            name="postalcode"
+          />
+        </div><div class="col-md-6 mt-3">
+          <label for="exampleInput" class="form-label">Phone 1</label>
+          <input
+            type="text"
+            class="form-control phone"
+           
+            name="phone"
+          />
+        </div><div class="col-md-6 mt-3">
+          <label for="exampleInput" class="form-label">Phone 2</label>
+          <input
+            type="text"
+            class="form-control phone"
+           
+            name="phone"
+          />
+        </div>
+        <div class="col-md-6 mt-3">
+          <button
+            style="width: 180px; font-weight:600;"
+            class="btn btn-danger"
+            type="submit"
+          >ADD ADDRESS</button></div>
+      </form>
+
+    </div>
+  </div>
+</section>
+<script>
+  
+  const streetAddress = document.getElementById('street-address'); 
+  const locality = document.getElementById('locality'); 
+  const city = document.getElementById('city'); 
+  const postalCode = document.getElementById('postalcode'); 
+  const phone = document.querySelectorAll('.phone'); 
+  const alertMsg = document.querySelector('.edit-profile-alert'); 
+  const form = document.querySelector('.addAddress-form');
+  const textFieldRegex = /^[a-zA-Z0-9\s]+$/;
+  const numberRegex = /^\d+$/; 
+  const phoneNumber  = /^\+\d+$/;
+  const hasCountryCode = /^\+\d+/; 
+  const isPhoneNumberValid = /^\+\d{12}$/; 
+
+  form.addEventListener('submit' ,(event) => { 
+    
+    const isPhone = Array.from(phone).some( 
+      (input) => input.value.trim() !== "");
+    const isPhonenumber = Array.from(phone).some( 
+      (input) =>phoneNumber.test(input.value.trim()) );
+    const isCountrycode = Array.from(phone).some( 
+      (input) =>hasCountryCode.test(input.value.trim()) ); 
+
+    const istenDigit = Array.from(phone).some(
+       (input) => isPhoneNumberValid.test(input.value.trim()));
+     if(streetAddress.value.trim() ==="" ||
+     locality.value.trim() ==="" || 
+      city.value.trim() ==="" ||
+     postalCode.value.trim() ==="" ) {
+     validateEdituser(alertMsg,'All Content MustBe Added',event) 
+     }else{ 
+      if(textFieldRegex.test(streetAddress.value.trim())&&
+         textFieldRegex.test(city.value.trim())){
+         if(numberRegex.test(postalCode.value.trim())){ 
+
+          if(isPhonenumber){
+            if(isPhone){ 
+            if(isCountrycode){
+                if(isCountrycode && istenDigit){ 
+
+                }else{ 
+                  validateEdituser(alertMsg ,'Phone Number must be 10 Digit', event) 
+                } 
+            }else{
+               validateEdituser(alertMsg,'Provide country code', event) 
+            } 
+          }else{
+             validateEdituser(alertMsg,'Atleast Add One Phone number', event) 
+          } 
+          }else{
+            validateEdituser(alertMsg,'Enter a valid phone number' ,event)
+          }
+        }else{
+           validateEdituser(alertMsg ,'Postal Code must Contain Numbers' ,event) 
+        } 
+       
+  }else{ 
+    validateEdituser(alertMsg,'Text Field Should Include Alphabets or Numbers',event) 
+    
+  }
+    }
+}) 
+
+
+  function  validateEdituser(notvalid, message, event) { 
+  event.preventDefault();
+  notvalid.innerHTML = message;
+  notvalid.classList.add("edit-profile-alert-visible"); 
+  setTimeout(() => {
+  notvalid.classList.remove("edit-profile-alert-visible"); 
+  }, 2000);
+  setTimeout(() =>
+   { notvalid.innerHTML = ""; }, 
+  2500); }
+</script>

@@ -1,0 +1,67 @@
+<section>
+  <div
+    style="background-color:#272525; height:auto; padding:100px 0px;"
+    class="d-flex justify-content-center align-items-center"
+  >
+    <div class="row p-0 m-0 container">
+      <div class="col-md-3 text-white ps-4">
+        <div style="height: 50px; width:50px;" class="mb-3">
+          <img src="/images/clipart1345268.png" class="h-100" />
+        </div>
+        <div class="text-white">MyBycycle.com is an e-commerce portal exclusive
+          for buying bicycles. One can pick from our wide range of top Indian
+          and international cycling brands with also kids and toddler specific
+          range of bicycles.</div>
+      </div>
+      <div class="col-md-3 text-white ps-4 mt-3 quick-links">
+        <div style="font-weight: 500; font-size:18px;" class="mb-2">QUICK LINKS</div>
+
+        <div
+          onclick="window.location.href = 'http://localhost:3000/home'"
+        >Home</div>
+
+        {{#if userInfo}}
+          <div id="view_cart" data-user-id="{{userInfo._id}}">Cart</div>
+          <div id="view-profile" data-user-id={{userInfo._id}}>Profile</div>
+          <div data-user-id={{userInfo._id}} id="view-wishlist">Wishlist</div>
+        {{else}}
+          <div
+            onclick="window.location.href = 'http://localhost:3000/user_login'"
+          >Wishlist</div>
+          <div
+            onclick="window.location.href = 'http://localhost:3000/user_login'"
+          >Cart</div>
+          <div
+            onclick="window.location.href = 'http://localhost:3000/user_login'"
+          >Profile</div>
+        {{/if}}
+
+      </div>
+      <div class="col-md-3 text-white mt-3 ps-4 support-links">
+        <div
+          style="font-weight: 500; font-size:18px;"
+          class="mb-2"
+        >SUPPORT</div>
+
+        <div
+          onclick="location.href='http://localhost:3000/get_in_touch'"
+        >Contact Us</div>
+        <div onclick="location.href='http://localhost:3000/about_us'">About Us</div>
+
+      </div>
+      <div class="col-md-3 text-white mt-3 ps-4">
+        <div
+          style="font-weight: 500; font-size:18px;"
+          class="text-wrap mb-2"
+        >FOLLOW US ON SOCIAL MEDIA</div>
+        <div class="text-white fs-3"><i class="fa-brands me-3 fa-twitter"></i><i
+            class="fa-brands fa-facebook me-3"
+          ></i>
+          <i class="fa-brands me-4 fa-instagram"></i><i
+            class="fa-brands fa-whatsapp"
+          ></i></div>
+      </div>
+    </div>
+  </div>
+
+</section>

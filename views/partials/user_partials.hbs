@@ -1,0 +1,793 @@
+<div
+  class="modal fade"
+  id="imageCropModal"
+  tabindex="-1"
+  aria-labelledby="imageCropModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageCropModalLabel">ALERT</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div style="height:fit-content; width:100%;">
+        <div class="row p-2">
+          <span
+            class="d-flex justify-content-center font-weight-bold text-danger fs-6 p-2 modal-body-alert"
+          >
+            <div>
+
+            </div>
+
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel_crop_button"
+          class="btn btn-outline-dark"
+          style="width:fit-content;"
+          data-bs-dismiss="modal"
+        >Cancel</button>
+        <button
+          id="confirmAction"
+          type="button"
+          class="btn btn-danger"
+        >Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  id="alert-button"
+  class="btn"
+  hidden
+  data-bs-toggle="modal"
+  data-bs-target="#imageCropModal"
+></button>
+<div
+  class="modal fade"
+  id="alertModal"
+  tabindex="-1"
+  aria-labelledby="imageCropModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageCropModalLabel">ALERT</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div style="height:fit-content; width:100%;">
+        <div class="row p-2">
+
+          <div class="d-flex justify-content-center align-items-center">
+            <div>
+              <span
+                class="font-weight-bold text-danger fs-6 px-3 me-2 modal-body-msg"
+              >
+
+              </span>
+            </div>
+            <div class="loader">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel_button"
+          class="btn btn-danger tex-white"
+          style="width:fit-content;"
+          data-bs-dismiss="modal"
+        >Cancel</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  id="msg-button"
+  hidden
+  class="btn"
+  data-bs-toggle="modal"
+  data-bs-target="#alertModal"
+></button>
+<nav class="sticky-top">
+  <div class="nav-container position-relative">
+    <div>
+      <img class="logo me-3" src="/images/clipart1345268.png" />
+    </div>
+    <div class="text-white nav-middle mt-4">
+      <div>
+
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <input
+          id="search-bar"
+          class="search-bar"
+          type="text"
+          placeholder="search"
+        />
+
+        {{#if userInfo}}
+          <span
+            id="view_cart"
+            class="fs-5 ms-4 cart me-2 position-relative"
+            data-user-id={{userInfo._id}}
+          ><i class="cart fa-solid me-2 fa-cart-shopping"></i>Cart
+            {{#if count}}
+              <span class="cart-count">{{count}}</span>
+            {{else}}
+              <span class="cart-count">0</span>
+            {{/if}}
+          </span>
+          <span
+            id="view-profile"
+            class="fs-5 ms-2 cart"
+            data-user-id={{userInfo._id}}
+          ><i class="cart fa-regular me-2 fa-user"></i>
+            {{userInfo.fname}}
+            {{userInfo.lname}}
+          </span>
+
+        {{else}}
+          <span
+            onclick="window.location.href = 'http://localhost:3000/user_login'"
+            class="fs-5 ms-4 cart"
+          ><i class="cart fa-solid me-2 fa-cart-shopping"></i>Cart</span>
+          <span
+            onclick="window.location.href = 'http://localhost:3000/user_login'"
+            class="fs-5 ms-2 cart"
+          ><i class="cart fa-regular me-2 fa-user"></i>
+            Login/Create Account</span>
+        {{/if}}
+
+      </div>
+
+      <ul class="fs-5 nav-list ps-0 mt-3">
+        <li
+          onclick="window.location.href='http://localhost:3000/home'"
+        >Home</li>
+        <li
+          onclick="window.location.href='http://localhost:3000/list_products'"
+        >Bycycles</li>
+
+        <li data-user-id="{{userInfo._id}}" id="view-wishlist">WishList</li>
+        <li onclick="location.href='http://localhost:3000/get_in_touch'">Contact
+          Us</li>
+        <li onclick="location.href='http://localhost:3000/about_us'">About Us</li>
+
+      </ul>
+    </div>
+    <div class="menu">
+      <button
+        class="btn btn-dark menu-button"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample"
+      ><i class="fa-solid fs-2 text-white fa-bars"></i></button>
+
+    </div>
+  </div>
+
+</nav>
+<section>
+  {{#if coupon}}
+    <div class="container-offer">
+      {{#each coupon}}
+        <div class="text-white content">
+          {{this.description}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <div class="offcanvas-header d-flex justify-content-end">
+
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <ul class="fs-4 mt-3">
+      {{#if userInfo}}
+        <li id="view-profile" data-user-id={{userInfo._id}}><i
+            class="fa-solid fa-user"
+          ></i>{{userInfo.fname}}
+          {{userInfo.lname}}</li>
+        <li onclick="window.location.href='http://localhost:3000/home'"><i
+            class="fa-solid fa-house"
+          ></i>
+          Home</li>
+        <li data-user-id={{userInfo._id}} id="view_cart"><i
+            class="fa-solid fa-cart-shopping"
+          ></i>
+          Cart</li>
+        <li
+          onclick="window.location.href='http://localhost:3000/list_products'"
+        ><i class="fa-solid fa-bicycle"></i>
+          Bycycle</li>
+
+        <li data-user-id={{userInfo._id}} id="view-wishlist"><i
+            class="fa-solid fa-star"
+          ></i>
+          Wishlist</li>
+        <li onclick="location.href='http://localhost:3000/get_in_touch'"><i
+            class="fa-solid fa-phone"
+          ></i>
+          Contact Us</li>
+        <li onclick="location.href='http://localhost:3000/about_us'"><i
+            class="fa-solid fa-address-card"
+          ></i>
+          About Us</li>
+      {{else}}
+        <li onclick="window.location.href='http://localhost:3000/user_login'"><i
+            class="fa-solid fa-user"
+          ></i>Login/Account</li>
+        <li
+          onclick="window.location.href='http://localhost:3000/list_products'"
+        ><i class="fa-solid fa-house"></i>
+          Home</li>
+        <li
+          onclick="window.location.href='http://localhost:3000/list_products'"
+        ><i class="fa-solid fa-cart-shopping"></i> Cart</li>
+        <li><i class="fa-solid fa-bicycle"></i> Bycycle</li>
+
+        <li onclick="window.location.href='http://localhost:3000/user_login'"><i
+            class="fa-solid fa-star"
+          ></i>
+          WishList</li>
+        <li><i
+            class="fa-solid fa-phone"
+            onclick="location.href='http://localhost:3000/get_in_touch'"
+          ></i>
+          Contact Us</li>
+        <li onclick="window.location.href='http://localhost:3000/about_us'"><i
+            class="fa-solid fa-address-card"
+          ></i>
+          About Us</li>
+      {{/if}}
+    </ul>
+  </div>
+
+</section>
+{{#if bannerPage}}
+  <section>
+    <div class="d-flex justify-content-center">
+      <div
+        id="carouselExampleInterval"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          {{#each banners}}
+            <div class="carousel-item active" data-bs-interval="3000">
+              <img src="/uploads/{{this.image}}" class="w-100" alt="..." />
+            </div>
+          {{/each}}
+
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+{{/if}}
+
+{{#if partial}}{{else}}
+  <section class="product-first-section">
+    <div class="my-4">
+      <span class="info">Explore Geared Bycycles,Electric Bycycles<br />
+        and other Bycycles</span>
+    </div>
+  </section>
+  <section class="product-second-section">
+    <div class="d-flex align-items-center justify-content-between">
+      <span>
+
+        Grand Total:
+        {{productCount}}
+        __products
+
+      </span>
+
+      <div class="d-flex">
+        <div class="me-1">
+          <div class="button-filter-responsive">
+            <button
+              class="btn btn-outline-dark h-100"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasTop"
+              aria-controls="offcanvasTop"
+            ><i class="fa-solid me-2 ms-1 fa-sliders"></i><i
+                class="fa-solid fa-chevron-down"
+              ></i></button>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-outline-secondary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-up-down"></i>
+            <span class="sort-criteria">SORT BY: Select an option</span>
+          </button>
+          <ul class="dropdown-menu">
+            <button
+              id="price-filter-button"
+              class="btn btn-ouline-secondary w-100"
+              data-criteria-value="-1"
+            >Price: High to Low</button>
+            <button
+              id="price-filter-button"
+              class="btn btn-ouline-secondary w-100"
+              data-criteria-value="1"
+            >Price: Low to High</button>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div
+    style="height:fit-content;"
+    class="offcanvas offcanvas-top"
+    tabindex="-1"
+    id="offcanvasTop"
+    aria-labelledby="offcanvasTopLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasTopLabel">Filters</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body border rounded m-3">
+      <div class="offcanvas-container d-flex justify-content-evenly">
+        <div class="user-offcanvas">
+          <div class="user-sub-filter">
+            <div class="fw-bold mb-2">USERS</div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Kid"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Kid</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Boys"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Boys</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Girls"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Girls</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Men"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Men</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Women"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Women</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Unisex"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Unisex</span>
+            </div>
+          </div>
+        </div>
+        <div class="brand-offcanvas">
+          <div class="brand-sub-filter">
+            <div class="fw-bold mb-2">BRAND</div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Polygon"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Polygon</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Java"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Java</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="XCI"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">XCi</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Ninety One"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Ninety One</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Triad"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Triad</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Avantio"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Avantio</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Rockfire"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Rockfire</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Montra"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Montra</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Unirox"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Unirox</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Merida"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Merida</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Vector"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Vector</span>
+            </div>
+
+          </div>
+        </div>
+        <div class="speed-offcanvas">
+          <div class="speed-subfilter">
+            <div class="fw-bold mb-2">SPEED</div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="7 speed"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">7 Speed</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="21 Speed"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">21 Speed</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="Single Speed"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">Single Speed</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <input
+                class="form-check-input mt-0 filter-checkbox"
+                type="checkbox"
+                value="18 Speed"
+                id="filter-checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              <span class="ms-3 filter-tag">18 Speed</span>
+            </div>
+          </div>
+        </div>
+        <div class="category-offcanvas">
+          <div class="category-subfilter">
+            <div class="fw-bold mb-2">CATEGORY</div>
+            {{#each category}}
+              <div class="d-flex align-items-center">
+                <input
+                  class="form-check-input mt-0 filter-checkbox"
+                  type="checkbox"
+                  value="{{this._id}}"
+                  aria-label="Checkbox for following text input"
+                />
+                <span class="ms-3 filter-tag">{{this.categoryName}}</span>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{/if}}
+
+<!-- modal for bootstrap cancel reason-->
+
+<button
+  hidden
+  type="button "
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  id="cancel-reason"
+  data-bs-target="#exampleModal"
+  data-bs-whatever="@fat"
+>Open modal for @fat</button>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">REASONS</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="cancel-reason-form">
+          <div class="mb-3">
+            <label class="text-danger cancel-reason-alert">Provide a Reason</label><br
+            />
+            <label for="message-text" class="col-form-label">Give your reason
+              for cancellation:</label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="reason"
+                value="Change of Plans"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Change of Plans
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="reason"
+                value="Duplicate Order"
+                id="flexRadioDefault2"
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Duplicate Order
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="reason"
+                value="Price Discrepancy"
+                id="flexRadioDefault3"
+              />
+              <label class="form-check-label" for="flexRadioDefault3">
+                Price Discrepancy
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="reason"
+                value="Shipping Delays"
+                id="flexRadioDefault4"
+              />
+              <label class="form-check-label" for="flexRadioDefault4">
+                Shipping Delays
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="reason"
+                value="Found Better Deal"
+                id="flexRadioDefault5"
+              />
+              <label class="form-check-label" for="flexRadioDefault5">
+                Found Better Deal
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="reason"
+                value="Financial Issues"
+                id="flexRadioDefault6"
+              />
+              <label class="form-check-label" for="flexRadioDefault6">
+                Financial Issues
+              </label>
+            </div>
+            <div class="form-check other-reason-div">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="reason"
+                id="flexRadioDefault7"
+              />
+              <label class="form-check-label" for="flexRadioDefault7">
+                Other
+              </label>
+            </div>
+            <div
+              id="otherReasonTextArea"
+              class="text-box"
+              style="display: none;"
+            >
+              <textarea
+                style="height: 150px;"
+                class="form-control mt-2"
+                id="message-text"
+                placeholder="Enter your reason"
+              ></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          data-bs-dismiss="modal"
+        >Close</button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          id="confirm-reason-button"
+        >SAVE REASON</button>
+      </div>
+    </div>
+  </div>
+</div>

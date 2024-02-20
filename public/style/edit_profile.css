@@ -1,0 +1,32 @@
+.user-change-password-container,
+.edit-profile-container {
+  min-height: 100vh;
+  background-color: #f6f6f6;
+  padding: 30px 60px;
+  background-color: #f6f6f6;
+  height: auto;
+  padding-bottom: 50px;
+  transition: 0.5 ease;
+}
+.user-change-password-form-container,
+.edit-form-container {
+  background-color: #ffffff;
+  padding: 30px 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+}
+.alert-user-change-password {
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.alert-user-change-password-visible {
+  opacity: 1;
+}
+.alert-user-otp-change-password {
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.alert-user-otp-change-password-visible {
+  opacity: 1;
+}
+

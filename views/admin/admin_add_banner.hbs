@@ -1,0 +1,66 @@
+<div
+  class="alert addbanner-msg w-25 position-fixed top-0 m-4 alert-danger"
+  role="alert"
+>
+  All contents must be added
+</div>
+<div class="container" id="addcategory-container">
+  <div class="row px-5 pt-2">
+    <form
+      action="/add-banner"
+      method="POST"
+      class="row g-3 add-banner-form"
+      enctype="multipart/form-data"
+    >
+      <div>
+        <label class="fs-4 mb-3 h2 me-2">Banner Details</label>
+
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">ACTIVE FROM</label>
+        <input type="date" name="activeFrom" class="form-control active-from" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">ACTIVE TO</label>
+        <input type="date" name="activeTo" class="form-control active-to" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Upload Image</label>
+        <input
+          class="form-control banner-image"
+          type="file"
+          id="formFileMultiple"
+          name="files"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">CHOOSE BANNER CATEGORY</label>
+        <select
+          class="form-select form-control"
+          aria-label="Default select example"
+          name="bannerCat"
+        >
+
+          <option selected value="MAIN">Main Banner</option>
+          {{#each category}}
+            <option value="{{categoryName}}">{{categoryName}}
+              category Banner</option>
+          {{/each}}
+
+        </select>
+      </div>
+      <div class="col-md-12">
+        <button
+          type="submit"
+          id="add-banner "
+          style="width: 150px;"
+          class="btn p-2 mt-3 mb-3 btn-success tex-nowrap"
+        >ADD BANNER</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

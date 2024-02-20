@@ -1,0 +1,98 @@
+<div
+  class="alert edit-profile-alert w-25 position-fixed m-4 alert-danger"
+  style="top:150px;"
+  role="alert"
+></div>
+<section>
+  <div class="container edit-profile-container">
+    <div class="my-2 edit-profile-tag">EDIT PROFILE</div>
+    <div class="row edit-form-container">
+      <form id="edit-user-form" class="row" >
+        <div class="mb-3 col-md-6">
+          <label for="exampleInputEmail1" class="form-label">First Name</label>
+          <input
+            type="text"
+            value="{{userInfo.fname}}"
+            name="fname"
+            class="form-control user-fname"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="exampleInputEmail1" class="form-label">Last Name</label>
+          <input
+           value="{{userInfo.lname}} "
+            type="text"
+            class="form-control user-lname"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="lname"
+          />
+
+        </div>
+        <div class="mb-3 col-12">
+          <label for="exampleInputPassword1" class="form-label">Email</label>
+          <input type="text" value="{{userInfo.email}}" name="email" class="form-control user-email" />
+        </div>
+        
+    </form>
+    <button type="submit"  data-user-id="{{userInfo._id}}" style="width: 150px;" id="edit-user" class="btn btn-danger">SAVE
+          CHANGES</button>
+       
+    </div>
+  </div>
+</section>
+<script>
+const fname = document.querySelector('.user-fname')
+const lname = document.querySelector('.user-lname')
+const email = document.querySelector('.user-email')
+const button = document.getElementById('edit-user')
+const alertMsg = document.querySelector('.edit-profile-alert');
+
+const textFieldRegex = /^[a-zA-Z0-9\s]+$/;
+const emailRegex =/^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$/
+
+button.addEventListener('click' , (e) => {
+    var userId = button.getAttribute('data-user-id')
+       console.log('s')
+       if(fname.value.trim() !=="" &&
+       lname.value.trim() !=="" &&
+       email.value.trim() !==""){
+        if(textFieldRegex.test(fname.value.trim()) &&
+        textFieldRegex.test(lname.value.trim())){
+            if(emailRegex.test(email.value.trim())){
+             submitForm(userId)
+            }else{
+                validateEdituser(alertMsg ,'Enter a Valid email' ,e)
+            }
+
+        }else{
+            validateEdituser(alertMsg ,'All text fields should only contain alphabets or numbers' ,e)
+        }
+
+       }else{
+        validateEdituser(alertMsg ,'All Fields Must be Added' ,e)
+
+       }
+
+})
+
+
+
+
+
+
+
+function  validateEdituser(notvalid, message, event) { 
+    event.preventDefault();
+  notvalid.innerHTML = message;
+  notvalid.classList.add("edit-profile-alert-visible"); 
+  setTimeout(() => {
+  notvalid.classList.remove("edit-profile-alert-visible"); 
+  }, 2000);
+  setTimeout(() =>
+   { notvalid.innerHTML = ""; }, 
+  2500); }
+</script>

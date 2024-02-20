@@ -1,0 +1,91 @@
+<section>
+  <div class="d-flex justify-content-center">
+    <div class="container wishlist-container">
+      <div class="row">
+
+        <div style="font-weight: 700; font-size:17px; color:gray;">YOUR WISHLIST</div>
+
+        {{#if wishlist}}
+          {{#each wishlist.products}}
+
+            <div class="col-md-12 col-lg-6 wishlist-box box-{{this._id}}">
+              <div class="wishlist">
+                <div>
+                  <div class="wishlist-product-details">
+                    <div class="wishlist-img">
+                      <img
+                        src="/uploads/{{arrayIndex this.images 0}}"
+                        class="h-100"
+                      />
+                    </div>
+                    <div class="wishlist-product-datails-container">
+                      <span
+                        class="wishlist-product-name"
+                      >{{this.productName}}</span>
+                      <div class="wishlist-sub-details">
+                        <span>{{this.categoryInfo.categoryName}}</span><i
+                          class="fa fa-angle-double-right"
+                        ></i>
+                        <span>{{this.userType}}</span><i
+                          class="fa fa-angle-double-right"
+                        ></i>
+                        <span>{{this.gear}}</span><i
+                          class="fa fa-angle-double-right"
+                        ></i>
+                        <span>{{this.brakeType}}</span><i
+                          class="fa fa-angle-double-right"
+                        ></i>
+
+                      </div>
+                      <div class="wishlist-product-price">
+                        <span>Price :</span><span
+                          class="wishlist-price"
+                        >₹{{this.price}}</span>
+                      </div>
+                      {{#if inStock}}{{else}}
+                        <div>
+                          <span class="text-danger fs-6">Out of Stock</span>
+                        </div>
+                      {{/if}}
+                    </div>
+                  </div>
+                </div>
+                <div class="wishlist-buttons">
+                  <button
+                    data-product-id={{this._id}}
+                    class="btn mb-1 btn-danger wishlist-remove-button"
+                  ><span class="me-1 wishlist-button-tag">REMOVE</span><i
+                      class="fa-solid fa-xmark"
+                    ></i></button>
+
+                  {{#if inStock}}
+                    <button
+                      class="btn btn-outline-dark wishlist-addtocart-button"
+                      data-product-id={{this._id}}
+                      data-product-frame="{{this.frameSize}}"
+                      data-product-color="{{this.color}}"
+                    ><span class="me-1 wishlist-button-tag">ADD TO CART</span><i
+                        class="fa-solid fa-cart-shopping"
+                      ></i></button>
+                  {{else}}
+                    <button
+                      class="btn btn-outline-dark wishlist-addtocart-button disabled"
+                      data-product-id={{this._id}}
+                      data-product-frame="{{this.frameSize}}"
+                      data-product-color="{{this.color}}"
+                    ><span class="me-1 wishlist-button-tag">ADD TO CART</span><i
+                        class="fa-solid fa-cart-shopping"
+                      ></i></button>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{else}}
+
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+</section>

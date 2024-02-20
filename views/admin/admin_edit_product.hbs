@@ -1,0 +1,231 @@
+<div
+  class="alert addproducts-msg w-25 position-fixed top-0 m-4 alert-danger"
+  role="alert"
+>
+  All contents must be added
+</div>
+
+<div class="container" id="addproduct-container">
+  <div class="row px-5 pt-2">
+   
+
+    {{#each product}}
+    
+      <form
+        action="/admin_panel/products/edit_products/{{this._id}}?_method=PUT"
+        method="POST"
+       id="editProductForm"
+       class="row g-3"
+        enctype="multipart/form-data"
+      >
+
+        <label class="fs-4 mb-3 h2">Product Details</label>
+
+        <div class="col-md-6">
+          <input
+            type="text"
+            name="productname"
+            placeholder="PRODUCT NAME"
+            class="form-control product-name"
+            value="{{this.productName}}"
+          />
+        </div>
+        <div class="col-md-6">
+
+          <input
+            type="number"
+            name="price"
+            placeholder="PRICE"
+            class="form-control price"
+            value="{{this.price}}"
+          />
+        </div>
+        <div class="col-md-6">
+        <div class="row">
+          <div class="input-group mb-3">
+            <label
+              class="input-group-text"
+              for="inputGroupSelect01"
+            >Category</label>
+            <select class="form-select  " name="category" id="inputGroupSelect01">
+            
+              {{#each ../categoryData }}
+                <option 
+                 
+                {{#ifEquals this.categoryName  ../this.category.categoryName}}     
+                selected
+                {{/ifEquals}}
+
+                
+                  value="{{this.categoryName}}"
+                >{{this.categoryName}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
+        
+       
+        <div class="col-md-6">
+
+          <input
+            type="number"
+            name="quantity"
+            placeholder="QTY"
+            class="form-control quantity"
+            value="{{this.quantity}}"
+          />
+        </div>
+       
+        <label class="fs-4 mb-3 mt-5 h2">Product Features
+
+        </label>
+        {{#each this.frameSize as |size index|}}
+        <div class="col-md-4">
+            
+          <input
+            type="text"
+            name="framesize"
+            placeholder="FRAME SIZE"
+            class="form-control"
+            value="{{size}}"
+          />
+        </div>
+        {{/each}}
+        
+        <label class="fs-5">Select color </label>
+        {{#each this.color as |color index|}}
+        <div class="col-md-1">
+        
+          <input
+            type="text"
+            name="color"
+            placeholder="COLOUR"
+            class="form-control"
+            value="{{color}}"
+          />
+        </div>
+        {{/each}}
+        <label class="fs-4 mb-3 mt-5 h2">Specifications
+
+        </label>
+        <div class="col-md-4">
+          <input
+            type="text"
+            name="framemtr"
+            placeholder="FRAME MATERIAL"
+            class="form-control frame-mtr"
+            value="{{this.frameMtr}}"
+          />
+        </div>
+        <div class="col-md-4">
+
+          <input
+            type="text"
+            name="brake"
+            placeholder="BRAKE"
+            class="form-control brake"
+            value="{{this.brakeType}}"
+          />
+        </div>
+        <div class="col-md-4">
+
+          <input
+            type="text"
+            placeholder="SUSPENSION"
+            class="form-control suspension"
+            name="suspension"
+            value="{{this.suspension}}"
+          />
+        </div>
+
+        <div class="col-md-4">
+          <input
+            type="number"
+            name="weight"
+            placeholder="WEIGHT"
+            class="form-control weight"
+            value="{{this.weight}}"
+          />
+        </div>
+        <div class="col-md-4">
+
+          <input
+            type="text"
+            name="gear"
+            placeholder="GEAR"
+            class="form-control gear"
+            value="{{this.gear}}"
+          />
+        </div>
+        <div class="col-md-4">
+
+          <input
+            type="text"
+            name="brand"
+            placeholder="BRAND"
+            class="form-control brand"
+            value="{{this.brand}}"
+          />
+        </div>
+        <div class="col-md-4">
+
+          <input
+            type="text"
+            name="usertype"
+            placeholder="USER TYPE"
+            class="form-control user-type"
+            value="{{this.userType}}"
+          />
+        </div>
+        <label class="fs-4 mb-3 mt-5 h2">Description</label>
+        {{#each this.description as |text index|}}
+        <div class="col-md-4">
+            
+          <input
+            type="text"
+            name="description"
+            placeholder="DESCRIPTION "
+            class="form-control"
+            value="{{text}}"
+          />
+        </div>
+        {{/each}}
+         
+          <label class="fs-4 mb-3 mt-2 h2">Upload multiple Images</label>
+          {{#each this.images}}
+          <div style="width: 100px" class="d-flex">
+             <img src="/uploads/{{this}}" style="width: 100%; height:auto;" alt="">
+        </div>
+          {{/each}}
+          <input
+            class="form-control edit-form-images"
+            type="file"
+            name="files"
+            id="imageInput"
+           multiple
+          />
+        </div>
+        
+
+        <div class="col-md-12">
+          <button
+            type="submit"
+            id="add-product"
+            class="btn p-2 mt-3 ms-3 mb-3 btn-success"
+          >EDIT PRODUCT</button>
+        </div>
+
+      </form>
+    {{/each}}
+   
+
+  </div>
+  <div class="w-50 h-50">
+  <div id="croppingArea"></div>
+  </div>
+  
+   
+</div>
+
+</div>

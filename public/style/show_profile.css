@@ -1,0 +1,263 @@
+/**/
+.user-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-details label {
+  font-size: 20px;
+  margin-top: 5px;
+  font-weight: 500;
+}
+.user-edit-buttons {
+  width: 180px;
+}
+
+.user-edit-buttons button {
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+#logout {
+  width: 180px;
+  font-size: 15px;
+}
+#user-add-address {
+  width: 180px;
+  font-size: 15px;
+}
+.address {
+  height: fit-content;
+  min-height: 180px;
+  padding: 20px 30px;
+  border: 0.6px solid #cac9c9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.address-info {
+  font-size: 18px;
+}
+.form-check-label {
+  font-size: 15px;
+  font-weight: 500;
+}
+/**/
+
+.profile-container {
+  height: fit-content;
+  background-color: #f6f6f6;
+  margin: 0px 150px;
+  padding: 0px 60px;
+  margin-bottom: 50px;
+}
+.label {
+  font-weight: 700;
+}
+.profile {
+  width: 100%;
+  background-color: #ffffff;
+  height: fit-content;
+  border-radius: 15px;
+  padding: 60px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.user-icon {
+  font-size: 50px;
+}
+.wallet-buttons {
+  display: flex;
+  justify-content: end;
+}
+.edit-profile {
+  font-weight: 500;
+}
+.address-tag {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.edit-profile-tag {
+  font-weight: 700;
+  color: gray;
+  font-size: 20px;
+}
+.edit-user-form-container {
+  padding: 50px;
+}
+.edit-profile-alert {
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.edit-profile-alert-visible {
+  opacity: 1;
+}
+.edit-address {
+  font-size: 20px;
+}
+.wallet {
+  font-size: 40px;
+}
+.wallet-balance {
+  font-size: 20px;
+  font-weight: 500;
+}
+@media (min-width: 1200px) and (max-width: 1700px) {
+  .profile-container {
+    margin: 0px 70px;
+    padding: 0px 15px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  .profile-container {
+    margin: 0px 30px;
+    padding: 0px 15px;
+  }
+
+  .profile {
+    padding: 28px 24px;
+  }
+  .address {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .user-edit-buttons {
+    width: 195px;
+  }
+  .user-edit-buttons button {
+    font-size: 16px;
+  }
+  .user-details label {
+    font-size: 21px;
+  }
+  .user-details {
+    margin-bottom: 12px;
+  }
+  #logout {
+    width: 195px;
+    font-size: 16px;
+  }
+  #user-add-address {
+    width: 195px;
+    font-size: 16px;
+  }
+  .user-icon {
+    font-size: 48px;
+  }
+  .address-info {
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .form-check-label {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+  .profile-container {
+    margin: 0px 13px;
+    padding: 0px 10px;
+  }
+  .wallet-buttons {
+    justify-content: start;
+    margin-top: 12px;
+  }
+
+  .profile {
+    padding: 20px 18px;
+  }
+  .address {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .user-edit-buttons {
+    width: 180px;
+  }
+  .user-edit-buttons button {
+    font-size: 15px;
+  }
+  .user-details label {
+    font-size: 19px;
+  }
+  .user-details {
+    margin-bottom: 12px;
+  }
+  #logout {
+    width: 180px;
+    font-size: 15px;
+  }
+  #user-add-address {
+    width: 180px;
+    font-size: 15px;
+  }
+  .user-icon {
+    font-size: 45px;
+  }
+  .address-info {
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .form-check-label {
+    font-size: 16px;
+  }
+  .wallet-balance {
+    font-size: 18px;
+  }
+}
+@media (min-width: 300px) and (max-width: 600px) {
+  .profile-container {
+    margin: 0px 10px;
+    padding: 0px 5px;
+  }
+  .wallet-buttons {
+    justify-content: start;
+    margin-top: 12px;
+  }
+  .user-details-container {
+    display: block;
+  }
+  .profile {
+    padding: 20px 15px;
+  }
+  .address {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .user-edit-buttons {
+    width: 170px;
+  }
+  .user-edit-buttons button {
+    font-size: 13px;
+  }
+  .user-details label {
+    font-size: 18px;
+  }
+  .user-details {
+    margin-bottom: 10px;
+  }
+  #logout {
+    width: 170px;
+    font-size: 13px;
+  }
+  #user-add-address {
+    width: 170px;
+    font-size: 13px;
+  }
+  .user-icon {
+    font-size: 40px;
+  }
+  .address-info {
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .form-check-label {
+    font-size: 14px;
+  }
+  .wallet-balance {
+    font-size: 17px;
+  }
+}

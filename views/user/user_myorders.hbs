@@ -1,0 +1,133 @@
+<section>
+  <div class="container myorders-container">
+
+    <div>
+      <div class="my-3" style="font-weight: 700; color:gray;">YOUR ORDERS</div>
+      <div>
+        <!-- <div class="search-container d-flex">
+
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success myorder-search"
+            type="submit"
+          >Search</button>
+
+        </div>-->
+        <div class="myorder-table-container">
+          <div class="w-100 mt-3">
+
+            {{#each orders}}
+              <div class="orders-container row">
+                <div
+                  class="orders-product-image d-flex align-items-center col-md-4 col-lg-3"
+                >
+
+                  <img
+                    src="/uploads/{{arrayIndex this.productInfo.images 0}}"
+                    style="width: 100%;"
+                  />
+
+                </div>
+                <div class="col-md-4 col-lg-3 order-product-info">
+                  <label
+                    class="myorders-productName"
+                  >{{this.productInfo.productName}} </label><br />
+                  <label class="myorder-date">{{this.orderedAt}}</label><br />
+                  <label class="myorders-productInfo">
+                    <span>{{this.category.categoryName}} </span><span><i
+                        class="fa fa-angle-double-right"
+                      ></i></span>
+                    <span>{{this.productInfo.brand}} </span><span><i
+                        class="fa fa-angle-double-right"
+                      ></i></span>
+                    <span>{{this.productInfo.gear}}</span><span><i
+                        class="fa fa-angle-double-right"
+                      ></i></span>
+                    <span>{{this.productInfo.weight}}Kg</span><span><i
+                        class="fa fa-angle-double-right"
+                      ></i></span>
+                    <span>{{this.productInfo.brakeType}}</span>
+
+                  </label>
+                </div>
+                {{#ifEquals this.orderStage "CANCELLED"}}
+                  <div class="order-stage text-danger col-md-4 col-lg-3">
+                    {{this.orderStage}}
+                  </div>
+                {{else}}
+                  {{#ifEquals this.orderStage "CANCELLATION REQUESTED"}}
+                    <div class="order-stage text-danger col-md-4 col-lg-3">
+                      {{this.orderStage}}
+                    </div>
+                  {{else}}
+                    {{#ifEquals this.orderStage "PAYMENT PENDING"}}
+                      <div class="order-stage text-warning col-md-4 col-lg-3">
+                        {{this.orderStage}}
+                      </div>
+                    {{else}}
+                      {{#ifEquals
+                        this.orderStage "CANCELLED DUE TO PAYMENT NOT DONE"
+                      }}
+                        <div class="order-stage text-danger col-md-4 col-lg-3">
+                          {{this.orderStage}}
+                        </div>
+                      {{else}}
+                        {{#ifEquals this.orderStage "RETURN REQUESTED"}}
+                          <div
+                            class="order-stage text-warning col-md-4 col-lg-3"
+                          >
+                            {{this.orderStage}}
+                          </div>
+                        {{else}}
+                          {{#ifEquals this.orderStage "RETURNED"}}
+                            <div
+                              class="order-stage text-danger col-md-4 col-lg-3"
+                            >
+                              {{this.orderStage}}
+                            </div>
+                          {{else}}
+                            <div
+                              class="order-stage text-success col-md-4 col-lg-3"
+                            >
+                              {{this.orderStage}}
+                            </div>
+                          {{/ifEquals}}
+                        {{/ifEquals}}
+                      {{/ifEquals}}
+                    {{/ifEquals}}
+                  {{/ifEquals}}
+                {{/ifEquals}}
+
+                <div
+                  class="order-view-container col-md-12 col-lg-3 d-flex justify-content-end"
+                >
+                  <div data-order-id="{{this._id}}" class="btn order-view"><i
+                      class="fa-solid fa-chevron-right"
+                    ></i></div>
+
+                </div>
+              </div>
+            {{/each}}
+
+          </div>
+        </div>
+        <div class="pagination-container mt-4">
+          {{#if totalPages}}
+            <ul class="pagination">
+              {{#each pages}}
+                <li class="page-item {{#ifCond currentPage this}}active{{/ifCond}}">
+                  <a href="?page={{this}}" class="page-link">{{this}}</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

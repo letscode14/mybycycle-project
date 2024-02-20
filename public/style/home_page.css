@@ -1,0 +1,382 @@
+#carouselExampleInterval {
+  width: 70vw;
+  height: auto;
+  transition: 0.5s ease;
+}
+
+.carousel-inner {
+  width: 70vw;
+  height: auto;
+  transition: 0.5s ease;
+}
+
+.carousel-item {
+  width: 70vw;
+  height: auto;
+  transition: 0.5s ease;
+}
+
+.home-welcome-tag {
+  margin: 12px 0px;
+  font-size: 25px;
+  font-weight: 500;
+  transition: 0.5s ease;
+}
+
+#home-category {
+  display: flex;
+  justify-content: center;
+  transition: 0.5s ease;
+}
+
+#home-category-container {
+  width: 70vw;
+  height: auto;
+  transition: 0.5s ease;
+}
+
+.category-banner-image {
+  position: relative;
+  height: 500px;
+  transition: 0.5s ease;
+}
+
+.category-banner-image img {
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+.category-banner-image:hover {
+  z-index: 4;
+  transform: scale(1.1);
+  transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.category-banner-tag {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: 0.5s ease;
+}
+
+.category-banner-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+
+.home-policy-banner {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  transition: 0.5s ease;
+  margin: 25px 0px;
+}
+.policy-banner {
+  width: 70vw;
+  transition: 0.5s ease;
+}
+
+.policy-container {
+  border: 1px solid gray;
+  border-radius: 20px;
+  height: 170px;
+  width: 100%;
+  transition: 0.5s ease;
+}
+.policy-box {
+  margin: 0px 14px;
+}
+
+.policy-icon {
+  font-size: 35px;
+  transition: 0.5s ease;
+}
+.policy-container label {
+  font-size: 22px;
+  font-weight: 500;
+  transition: 0.5s ease;
+}
+.home-brand-container {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  transition: 0.5s ease;
+}
+.brand-container {
+  width: 70vw;
+  transition: 0.5s ease;
+}
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 180px;
+  min-width: 100px;
+  padding: 20px;
+  border: 0.5px solid rgb(194, 194, 194);
+  border-radius: 10px;
+  background-color: rgb(251, 251, 251);
+  transition: 0.5s ease;
+}
+.brand-img {
+  height: 80%;
+  transition: 0.5s ease;
+}
+.brand-label {
+  font-size: 20px;
+  font-weight: 400;
+  transition: 0.5s ease;
+}
+.view-all {
+  padding: 30px 0px;
+  margin-bottom: 80px;
+  transition: 0.5s ease;
+}
+.view-all-button {
+  width: 20%;
+  transition: 0.5s ease;
+}
+@media (min-width: 1200px) and (max-width: 1700px) {
+  .home-policy-banner {
+    margin: 20px 0px;
+  }
+  .welcome-tag {
+    padding: 0px;
+  }
+  .view-all-button {
+    width: 250px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  .brand {
+    height: 150px;
+
+    margin-top: 10px;
+  }
+
+  .view-all-button {
+    width: 250px;
+  }
+  .home-welcome-tag {
+    font-size: 22px;
+    margin: 0px 20px;
+  }
+  #carouselExampleInterval {
+    width: 90vw;
+    height: auto;
+  }
+
+  .carousel-inner {
+    width: 90vw;
+    height: auto;
+  }
+
+  .carousel-item {
+    width: 90vw;
+    height: auto;
+  }
+  .welcome-tag {
+    padding: 10px 0px;
+  }
+  #home-category-container {
+    width: 88vw;
+    margin-bottom: 10px;
+  }
+  .category-banner-image {
+    height: 380px;
+  }
+  .category-banner-tag {
+    font-size: 24px;
+  }
+  .view-all {
+    margin-bottom: 30px;
+  }
+  .policy-container {
+    height: 140px;
+    width: 95%;
+  }
+  .policy-icon {
+    font-size: 23px;
+  }
+  .policy label {
+    font-size: 18px;
+  }
+  .policy {
+    margin-bottom: 10px;
+  }
+  .home-policy-banner {
+    margin: 8px 0px;
+  }
+  .welcome-tag {
+    padding: 0px;
+  }
+  .policy-box {
+    margin: 0;
+  }
+  .policy-banner {
+    width: 90vw;
+  }
+  .brand-container {
+    width: 90vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 800px) {
+  .brand {
+    height: 150px;
+
+    margin-top: 10px;
+  }
+
+  .view-all-button {
+    width: 50%;
+  }
+  .home-welcome-tag {
+    font-size: 22px;
+    margin: 0px 20px;
+  }
+  #carouselExampleInterval {
+    width: 90vw;
+    height: auto;
+  }
+
+  .carousel-inner {
+    width: 90vw;
+    height: auto;
+  }
+
+  .carousel-item {
+    width: 90vw;
+    height: auto;
+  }
+  .welcome-tag {
+    padding: 10px 0px;
+  }
+  #home-category-container {
+    width: 88vw;
+    margin-bottom: 10px;
+  }
+  .category-banner-image {
+    height: 380px;
+  }
+  .category-banner-tag {
+    font-size: 24px;
+  }
+  .view-all {
+    margin-bottom: 30px;
+  }
+  .policy-container {
+    height: 140px;
+    width: 95%;
+  }
+  .policy-icon {
+    font-size: 23px;
+  }
+  .policy label {
+    font-size: 18px;
+  }
+  .policy {
+    margin-bottom: 10px;
+  }
+  .home-policy-banner {
+    margin: 10px 0px;
+  }
+  .policy-box {
+    margin: 0;
+  }
+  .policy-banner {
+    width: 90vw;
+  }
+  .brand-container {
+    width: 90vw;
+  }
+}
+@media (min-width: 300px) and (max-width: 600px) {
+  .policy-banner {
+    width: 90vw;
+  }
+  .policy-box {
+    margin: 0px 10px;
+  }
+  .brand {
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  .view-all-button {
+    width: 60%;
+  }
+  .home-welcome-tag {
+    font-size: 18px;
+    margin: 0px 20px;
+  }
+  #carouselExampleInterval {
+    width: 95vw;
+    height: auto;
+  }
+
+  .carousel-inner {
+    width: 95vw;
+    height: auto;
+  }
+
+  .carousel-item {
+    width: 95vw;
+    height: auto;
+  }
+  .welcome-tag {
+    padding: 10px 0px;
+  }
+  #home-category-container {
+    width: 90vw;
+  }
+  .category-banner-image {
+    height: 300px;
+  }
+  .category-banner-tag {
+    font-size: 20px;
+  }
+  .view-all {
+    margin-bottom: 30px;
+  }
+  .policy-container {
+    height: 120px;
+  }
+  .policy-icon {
+    font-size: 26px;
+  }
+  .policy label {
+    font-size: 20px;
+  }
+  .policy {
+    margin-bottom: 10px;
+  }
+  .home-policy-banner {
+    margin: 10px 0px;
+  }
+  .policy-box {
+    margin: 0;
+  }
+  .brand-container {
+    width: 90vw;
+  }
+  .welcome-tag {
+    padding: 0;
+  }
+  .view-all-button {
+    width: 250px;
+  }
+}

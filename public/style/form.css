@@ -1,0 +1,105 @@
+
+::placeholder {
+  color: #716e6e;
+  font-size: 14px;
+  padding-left: 12px;
+}
+input {
+  padding: 8px 8px;
+  width: 500px;
+  border: 0.1px solid #b1aeae;
+  border-radius: 7px;
+
+  transition:
+    width 0.5s ease,
+    padding 0.5s ease;
+}
+.form {
+  margin-top: 50px;
+}
+.login-image {
+  margin-top: 124px;
+  transition:
+    margin-top 0.5s ease,
+    width 0.5s ease,
+    height 0.5s ease;
+}
+.button-create {
+  width: 300px;
+}
+
+form div {
+  display: flex;
+  justify-content: center;
+}
+.form-empty,
+.notvalid-email,
+.notvalid-password,
+.password-notmatch,
+.notvalid-number {
+  font-size: 14px;
+  color: red;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.valid {
+  opacity: 1;
+}
+
+.warning {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+.warning-msg {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  transition: width 0.5s ease;
+}
+.forgot-password,
+.password-warning {
+  transition: font-size 0.5s ease;
+}
+.logo {
+  transition: margin-top 0.5s ease;
+}
+@media (max-width: 450px) {
+  input {
+    width: 300px;
+  }
+  .forgot-password,
+  .password-warning {
+    font-size: 14;
+  }
+  .warning-msg {
+    width: 300px;
+  }
+  .warning-login-msg {
+    width: 300px;
+  }
+
+  .login-image {
+    margin-top: 8px;
+  }
+  .logo {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 991px) {
+  .login-image {
+    margin-top: 8px;
+  }
+  .logo {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 400px) {
+  input {
+    width: 300px;
+    padding: 6px 6px;
+  }
+  ::placeholder {
+    font-size: 12;
+  }
+}

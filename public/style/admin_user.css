@@ -1,0 +1,237 @@
+body {
+  overflow-x: auto;
+  padding: 0 15px;
+}
+.fluid-image {
+  max-width: 100%;
+  height: auto;
+  transition: max-width 0.7s ease;
+}
+.container-user-panel {
+  justify-content: center;
+  margin: 0 100px;
+  transition: margin 0.4s ease;
+}
+.admin-label {
+  position: absolute;
+  top: 35%;
+  right: 16%;
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
+  transition:
+    font-size 0.7s ease,
+    top 0.7s ease,
+    right 0.7s ease;
+}
+
+.dashboard,
+.user,
+.products,
+.orders,
+.category,
+.coupon,
+.banner {
+  border: 0.5px solid transparent;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 10px;
+  padding: 7px 10px;
+  transition: border 0.3s ease;
+}
+
+.admin-navbar {
+  width: 230px;
+  margin-top: 30px;
+  margin-right: 40px;
+
+  transition: width 0.7s ease;
+}
+
+.admin-navbar:hover {
+  cursor: pointer;
+}
+
+.nav-category {
+  margin-left: 20px;
+  font-weight: 700;
+  transition: font-size 0.7s ease;
+}
+
+.icons {
+  margin-left: 7px;
+  transition: margin-left 0.7s ease;
+}
+
+#user-delete-icon {
+  color: red;
+}
+.btn {
+  width: 50px;
+}
+
+#left-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 18px 10px 0 12px;
+}
+.fa-right-from-bracket {
+  display: none;
+}
+.logout-button {
+  margin-top: 15px;
+}
+.form-control {
+  border: 0.8px solid #000000;
+  border-radius: 0;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  margin-bottom: 12px;
+}
+#edit-category,
+#add-category,
+#add-product {
+  width: 220px;
+  transition: width 0.7s ease;
+}
+#addcategory-container,
+#addproduct-container {
+  margin-bottom: 100px;
+
+  border: 0.5px solid #b3b3b3;
+  margin-top: 30px;
+  border-radius: 15px;
+}
+.addcoupon-alert,
+.addbanner-msg,
+.addcategory-msg,
+.addproducts-msg {
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+.addbanner-msg-visible,
+.addcategory-msg-visible,
+.addproducts-msg-visible {
+  opacity: 1;
+}
+.category-checks input {
+  width: 100px;
+}
+
+@media (min-width: 1200px) and (max-width: 1700px) {
+  .admin-label {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .admin-label {
+    font-size: 32px;
+  }
+  .nav-category {
+    font-size: 12px;
+  }
+  .admin-navbar {
+    width: 190px;
+    margin-right: 14px;
+  }
+  .container-user-panel {
+    margin: 0 65px;
+  }
+  #add-category,
+  #add-product {
+    width: 200px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+  .admin-label {
+    font-size: 25px;
+  }
+  .nav-category {
+    display: none;
+  }
+  .admin-navbar {
+    width: 48px;
+    margin-top: 15px;
+    margin-right: 0px;
+  }
+  .icons {
+    margin-left: 5px;
+  }
+  .dashboard,
+  .user,
+  .products,
+  .orders,
+  .category,
+  .coupon,
+  .banner {
+    padding: 10px 10px;
+    height: 45px;
+  }
+  .divider {
+    display: none;
+  }
+  .container-user-panel {
+    margin: 0 45px;
+  }
+  .log-out {
+    display: none;
+  }
+  .fa-right-from-bracket {
+    display: contents;
+  }
+  #left-container {
+    width: 50%;
+  }
+  #add-category,
+  #add-product {
+    width: 170px;
+  }
+}
+@media (min-width: 300px) and (max-width: 600px) {
+  .admin-label {
+    font-size: 17px;
+  }
+  .nav-category {
+    display: none;
+  }
+  .admin-navbar {
+    width: 48px;
+    margin-top: 15px;
+    margin-right: 0px;
+  }
+  .icons {
+    margin-left: 5px;
+  }
+  .dashboard,
+  .user,
+  .products,
+  .orders,
+  .category,
+  .coupon,
+  .banner {
+    padding: 10px 10px;
+    height: 45px;
+  }
+  .divider {
+    display: none;
+  }
+  .container-user-panel {
+    margin: 0 20px;
+  }
+  .log-out {
+    display: none;
+  }
+  .fa-right-from-bracket {
+    display: contents;
+  }
+  #add-category,
+  #add-product {
+    width: 150px;
+  }
+}

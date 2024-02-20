@@ -1,0 +1,67 @@
+.category-tag {
+  font-size: 25px;
+  font-weight: 600;
+}
+.chart-container {
+  max-width: 450px;
+  max-width: 450px;
+  min-height: 400px;
+}
+.statistic {
+  padding: 20px 20px;
+  border-radius: 13px;
+  background-color: #c5aee8;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.statistic span {
+  font-size: 20px;
+  font-weight: 600;
+}
+.statistic label {
+  font-size: 20px;
+}
+.tag {
+  color: #5f29b8;
+  font-weight: 500;
+}
+.order-statistic {
+  padding: 20px 20px;
+  border-radius: 13px;
+  background-color: #c5aee8;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 17px;
+}
+.order-statistic span {
+  font-size: 18px;
+  font-weight: 600;
+}
+.order-statistic label {
+  font-size: 18px;
+}
+.order-statistics-container {
+  margin-top: 50px;
+}
+.line-chart-container {
+  margin-top: 30px;
+  max-width: 1000px;
+  min-width: 200px;
+  height: auto;
+}
+.totalsale-statistics {
+  padding: 20px 20px;
+  border-radius: 13px;
+  background-color: #c5aee8;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 25px;
+}
+.totalsale-statistics span {
+  font-size: 20px;
+  font-weight: 600;
+}
+.totalsale-statistics label {
+  font-size: 20px;
+}
+.sales-report-format,
+.sales-report-print {
+  display: none;
+}

@@ -1,0 +1,122 @@
+<section>
+  <div class="container get-intouch-container">
+    <div style="font-weight: 700; font-size:17px; color:gray;">GET IN TOUCH
+      <span class="touch-msg text-danger ms-3"></span></div>
+
+    <div class="row mt-2">
+      <div class="col-md-12 col-sm-12 col-lg-9">
+        <form id="get_touch_form" class="row">
+          <div class="mb-3 col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              class="form-control touch-firstname"
+              id="firstName"
+              name="firstName"
+            />
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control touch-lastname"
+              id="lastName"
+              name="lastName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              class="form-control touch-email"
+              id="email"
+              name="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input
+              type="text"
+              class="form-control touch-subject"
+              id="subject"
+              name="subject"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Write Messages to Us</label>
+            <textarea
+              class="form-control touch-message"
+              id="message"
+              name="message"
+              rows="3"
+            ></textarea>
+          </div>
+
+        </form>
+        <div>
+          <button
+            id="get-in-touch-submit-button"
+            class="btn get-in-touch-button btn-danger"
+          >SEND MESSAGE</button>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-sm-12 col-lg-3 get-touch-contact-details">
+        <div class="d-flex align-items-center">
+          <i class="mobile-icon me-4 fa-solid fa-mobile"></i>
+          <div>
+            <label>+91 85909339378</label><br />
+            <label class="text-nowrap">From Mon to Fri 9am to 5pm</label>
+          </div>
+        </div>
+        <div class="d-flex align-items-center mt-2">
+          <i class="mobile-icon fa-regular me-3 fa-envelope"></i>
+          <div>
+            <label>mycycle19@gmail.com</label><br />
+            <label class="text-nowrap">Send your query to this Email</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<script>
+    const touchFirstName = document.querySelector(".touch-firstname");
+const touchLastName = document.querySelector(".touch-lastname");
+const touchEmail = document.querySelector(".touch-email");
+const touchSubject = document.querySelector(".touch-subject");
+const touchMessage = document.querySelector(".touch-message");
+const getInTouchButton = document.getElementById("get-in-touch-submit-button");
+const touchAlert = document.querySelector(".touch-msg");
+const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
+getInTouchButton.addEventListener("click", () => {
+      if (
+    touchFirstName.value.trim() !== "" &&
+    touchLastName.value.trim() !== "" &&
+    touchEmail.value.trim() !== "" &&
+    touchSubject.value.trim() !== "" &&
+    touchMessage.value.trim() !== ""
+  ) {
+    if (emailRegex.test(touchEmail.value.trim())) {
+      submitGetTouchForm();
+    } else {
+      validateSendMsg(touchAlert, "Enter A valid Email");
+    }
+  } else {
+    validateSendMsg(touchAlert, "All Contents Must be Added");
+  }
+});
+
+function validateSendMsg(notvalid, message) {
+  notvalid.innerHTML = message;
+  notvalid.classList.add("touch-msg-visible");
+  setTimeout(() => {
+    notvalid.classList.remove("touch-msg-visible");
+  }, 2000);
+  setTimeout(() => {
+    notvalid.innerHTML = "All Contents Must Be Added";
+  }, 2500);
+}
+</script>

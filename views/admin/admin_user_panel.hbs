@@ -1,0 +1,104 @@
+<section class="container-user-panel d-flex">
+  <div class="admin-navbar">
+    <div class="sticky-top" style="top: 2%;">
+      <div class="dashboard" onclick="navigatetoPages('dashboard')">
+        <i class="fa fa-th icons" aria-hidden="true"></i>
+        <span class="nav-category">DASHBOARD</span>
+      </div>
+      <div
+        class="user"
+        style="border: 0.5px solid rgb(136, 132, 132);"
+        onclick="navigatetoPages('user')"
+      >
+        <i class="fa fa-users icons" aria-hidden="true"></i>
+        <span class="nav-category">USER</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('products')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">PRODUCTS</span>
+      </div>
+      <div class="products" onclick="navigatetoPages('productsSpec')">
+        <i class="fa-solid fa-boxes-stacked icons"></i>
+        <span class="nav-category">SPECIFICATIONS</span>
+      </div>
+      <div class="orders" onclick="navigatetoPages('orders')">
+        <i class="fa-solid fa-box icons"></i>
+        <span class="nav-category">ORDERS</span>
+      </div>
+      <div class="category" onclick="navigatetoPages('category')">
+        <i class="fa-solid fa-list icons"></i>
+        <span class="nav-category">CATEGORY</span>
+      </div>
+      <div class="coupon" onclick="navigatetoPages('coupon')">
+        <i class="fa-solid fa-money-bill icons"></i>
+        <span class="nav-category">COUPON</span>
+      </div>
+      <div class="banner" onclick="navigatetoPages('banner')">
+        <i class="fa-regular fa-object-group icons"></i>
+        <span class="nav-category">BANNER</span>
+      </div>
+      <div class="logout-button">
+        <button class="w-100 btn btn-danger"><span class="log-out">LOG OUT</span><i
+            class="fa-solid text-white fa-right-from-bracket"
+          ></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="divider">
+    <div
+      style="border:0.5px solid rgb(130, 127, 127);  display:inline-block; height:800px;"
+    ></div>
+  </div>
+  <div id="left-container">
+    <table id="example" class="table table-striped nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th>USER NAME</th>
+          <th>EMAIL</th>
+          <th>PHONE</th>
+          <th>ADDRESS</th>
+          <th>CREATED AT</th>
+          <th>UPDATED AT</th>
+          <th style="width: 100px;">ACTIONS</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each userData}}
+          <tr>
+            <td>{{this.fname}} {{this.lname}}</td>
+            <td class="text-truncate">{{this.email}}</td>
+
+            <td>
+              {{#if this.phone}}
+                {{#each this.phone}}
+                  {{this}}{{#unless @last}}, {{/unless}}
+                {{/each}}
+              {{else}}
+                N/A
+              {{/if}}
+            </td>
+
+            <td>n/a</td>
+            <td>{{this.createdAt}}</td>
+            <td>{{this.updatedAt}}</td>
+            <td>{{#if isBlocked}}<button
+                  class="btn unblock-button"
+                  data-user-id={{this._id}}
+                ><i
+                    class="user-blocked-icon{{this._id}}
+                      fa-solid text-danger fa-user-slash"
+                  ></i></button>{{else}}<button
+                  class="btn px-2 block-button"
+                  data-user-id={{this._id}}
+                ><i
+                    class="user-block-icon{{this._id}}
+                      fa-solid fa-user text-success"
+                  ></i></button>{{/if}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+</section>

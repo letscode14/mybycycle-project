@@ -1,0 +1,78 @@
+<div
+  class="alert addcoupon-alert w-25 position-fixed top-0 m-4 alert-danger"
+  role="alert"
+>
+  All contents must be added
+</div>
+<div class="container" id="addcategory-container">
+  <div class="row px-5 pt-2">
+    <form action="/add-coupon" method="POST" class="row g-3">
+      {{#if alreadyExist}}
+        <span class="text-danger">Coupon Code Already exist</span>
+      {{/if}}
+      <div>
+        <label class="fs-4 mb-3 h2 me-2">Coupon Details</label>
+
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">COUPON CODE</label>
+        <input type="text" name="couponCode" class="form-control coupon-code" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">MIN AMOUNT</label>
+        <input type="number" name="minAmount" class="form-control min-amount" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">DISCOUNT (in %)</label>
+        <input type="number" name="discount" class="form-control discount" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">DESCRIPTION</label>
+        <input type="text" name="des" class="form-control description" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">VALID FROM</label>
+        <input
+          type="date"
+          name="validFrom"
+          class="form-control valid-from-date"
+        />
+
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">VALID TO</label>
+        <input type="date" name="validTo" class="form-control valid-to-date" />
+
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">APPLICABLE TO </label>
+        <select
+          class="form-select form-control"
+          aria-label="Default select example"
+          name="applicableT0"
+        >
+
+          <option selected value="ALL">All products</option>
+          {{#each category}}
+            <option value="{{categoryName}}">{{categoryName}}
+            </option>
+          {{/each}}
+
+        </select>
+      </div>
+      <div class="col-md-12">
+        <button
+          type="submit"
+          id="add-banner "
+          style="width: 150px;"
+          class="btn p-2 mt-3 mb-3 btn-success tex-nowrap"
+        >ADD COUPON</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
