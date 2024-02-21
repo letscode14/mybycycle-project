@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   const currentURl = window.location.pathname;
-  const href = window.location.href;
 
   if (currentURl.includes("/user/my-orders/")) {
     document.title = "My Orders";
@@ -16,25 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
     document.title = "Edit Address";
   } else if (currentURl.includes("/user/user_checkout/")) {
     document.title = "Check Out";
-  } else if (href == "/admin_panel/user_management") {
+  } else if (currentURl.includes("/admin_panel/user_management")) {
     document.title = "User Management";
-  } else if (href == "/admin_panel") {
-    document.title = "Admin Dashboard";
-  } else if (href == "/admin_panel/orders") {
+  } else if (currentURl.includes("/admin_panel/orders")) {
     document.title = "Orders";
-  } else if (href == "/admin_panel/products") {
+  } else if (currentURl.includes("/admin_panel/products")) {
     document.title = "Products";
-  } else if (href == "/admin_panel/products/add_product") {
+  } else if (currentURl.includes("/admin_panel/products/add_product")) {
     document.title = "Add Products";
-  } else if (
-    href == "/admin_panel/products/specification"
-  ) {
+  } else if (currentURl.includes("/admin_panel/products/specification")) {
     document.title = "Product Specification";
   } else if (currentURl.includes("/admin_panel/products/edit_product/")) {
     document.title = "Edit Product";
-  } else if (href == "/admin_panel/category") {
+  } else if (currentURl.includes("/admin_panel/category")) {
     document.title = "Category";
-  } else if (href == "/admin_panel/add_category") {
+  } else if (currentURl.includes("/admin_panel/add_category")) {
     document.title = "Add Category";
   } else if (currentURl.includes("/admin_panel/category/edit_category/")) {
     document.title = "Edit Category";
@@ -48,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.title = "Change Password";
   } else if (currentURl.includes("/user/user_change_password_submit")) {
     document.title = "Verify User";
-  } else if (href == "/home") {
+  } else if (currentURl.includes("/home")) {
     document.title = "Home";
   } else if (currentURl.includes("/admin_panel/coupon/add_coupon")) {
     document.title = "Add Coupon";
@@ -80,5 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.title = "Submit Otp";
   } else if (currentURl.includes("/change_password")) {
     document.title = "Change Password";
+  } else if (currentURl.includes("/admin_panel")) {
+    document.title = "Admin Dashboard";
   }
 });

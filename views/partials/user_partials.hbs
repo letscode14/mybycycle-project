@@ -223,7 +223,10 @@
         <li data-user-id={{userInfo._id}} id="view_cart"><i
             class="fa-solid fa-cart-shopping"
           ></i>
-          Cart</li>
+          Cart
+          {{#if count}}<span
+              class="count-res text-white"
+            >{{count}}</span>{{/if}}</li>
         <li onclick="window.location.href='/list_products'"><i
             class="fa-solid fa-bicycle"
           ></i>
@@ -249,7 +252,7 @@
             class="fa-solid fa-house"
           ></i>
           Home</li>
-        <li onclick="window.location.href='/list_products'"><i
+        <li onclick="window.location.href='/user_login'"><i
             class="fa-solid fa-cart-shopping"
           ></i>
           Cart</li>

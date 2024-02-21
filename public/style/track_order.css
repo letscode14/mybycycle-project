@@ -2,9 +2,11 @@
   background-color: #f6f6f6;
   height: auto;
   min-height: 100vh;
+  transition: 0.5 s ease;
 }
 .track-container {
   padding: 60px 60px;
+  transition: 0.5 s ease;
 }
 .track-order-box {
   height: auto;
@@ -21,24 +23,49 @@
   border-radius: 10px;
   height: 140px;
   width: 140px;
+  transition: 0.5 s ease;
 }
 .progress {
   position: relative;
   display: inline-block;
   width: 20px; /* Width of the vertical progress bar */
+  transition: 0.5 s ease;
 }
 .tick-mark {
   position: absolute;
   font-size: 20px;
   left: 24px;
   z-index: 1;
+  transition: 0.5 s ease;
 }
 .track-order-tag {
   font-weight: 600;
   font-size: 22px;
+  transition: 0.5 s ease;
 }
 .track-order-stage {
   font-weight: 500;
   font-size: 16px;
+  transition: 0.5 s ease;
 }
 
+@media (min-width: 60px) and (max-width: 1200px) {
+  .track-container {
+    padding: 30px 30px;
+  }
+}
+@media (min-width: 60px) and (max-width: 1200px) {
+  .track-container {
+    padding: 30px 10px;
+  }
+  .track-order-tag {
+    font-size: 19px;
+  }
+  .tick-mark {
+    font-size: 19px;
+  }
+  .track-order-image {
+    height: 90px;
+    width: 90px;
+  }
+}

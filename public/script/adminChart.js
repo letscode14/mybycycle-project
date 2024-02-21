@@ -318,8 +318,8 @@ function makelineChart(xAxis, sales, type) {
 }
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
-
-if (window.location.href == "/admin_panel") {
+const currentURl = window.location.pathname;
+if (currentURl.includes("/admin_panel")) {
   fetchData({ type: "monthly", year: currentYear });
 }
 

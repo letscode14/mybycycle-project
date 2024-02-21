@@ -307,6 +307,13 @@ ul li {
   font-size: 16px;
   font-weight: 600;
 }
+.count-res {
+  font-size: 15px;
+  padding: 5px 8px;
+  border-radius: 30px;
+  font-weight: 500;
+  background-color: red;
+}
 @keyframes moveText {
   from {
     transform: translateX(150%);

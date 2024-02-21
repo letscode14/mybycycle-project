@@ -232,6 +232,7 @@ const getadminDashboard = async (req, res) => {
 const fetchCategorysale = async (req, res, next) => {
   try {
     const categorySale = await categoryDb.categoryCollection.find().lean();
+    console.log("hvhjhvhj");
     if (req.body.type == "daily") {
       console.log(req.body);
       const startDate = new Date(req.body.startDate);
