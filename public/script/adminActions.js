@@ -78,7 +78,7 @@ $(document).ready(function () {
       success: function (_, _, response) {
         if (response.status === 200) {
           window.location.href =
-            "http://localhost:3000/admin_panel/products/edit_product/" +
+            "/admin_panel/products/edit_product/" +
             productId;
         }
       },
@@ -127,7 +127,7 @@ $(document).ready(function () {
         if (response.status === 200) {
           console.log(response.status);
           window.location.href =
-            "http://localhost:3000/admin_panel/category/edit_category/" +
+            "/admin_panel/category/edit_category/" +
             categoryId;
         }
       },
@@ -377,7 +377,7 @@ $(document).on("click", ".logout-button", function () {
         if (response.status === 200) {
           giveMsg("Logged Out SuccessFully");
           myModal._element.addEventListener("hidden.bs.modal", function () {
-            window.location.href = "http://localhost:3000/admin_login";
+            window.location.href = "/admin_login";
           });
         } else {
           console.error("Logout failed:", response.message);

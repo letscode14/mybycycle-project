@@ -2,14 +2,14 @@
 
 function navigatetoPages(element) {
   const pageUrls = {
-    dashboard: "http://localhost:3000/admin_panel",
-    user: "http://localhost:3000/admin_panel/user_management",
-    products: "http://localhost:3000/admin_panel/products",
-    category: "http://localhost:3000/admin_panel/category",
-    productsSpec: "http://localhost:3000/admin_panel/products/specification",
-    orders: "http://localhost:3000/admin_panel/orders",
-    banner: "http://localhost:3000/admin_panel/banner",
-    coupon: "http://localhost:3000/admin_panel/coupon",
+    dashboard: "/admin_panel",
+    user: "/admin_panel/user_management",
+    products: "/admin_panel/products",
+    category: "/admin_panel/category",
+    productsSpec: "/admin_panel/products/specification",
+    orders: "/admin_panel/orders",
+    banner: "/admin_panel/banner",
+    coupon: "/admin_panel/coupon",
   };
 
   window.location.href = pageUrls[element];

@@ -44,7 +44,7 @@ $(document).on("click", "#resendotp-button", function () {
         showMsg(response.message, otpResend);
       } else if (response.resendFailed) {
         otpResend.classList.add("valid");
-        otpResend.innerHTML = `Resend Failed Try to  <a href="http://localhost:3000/user_login">login</a>`;
+        otpResend.innerHTML = `Resend Failed Try to  <a href="/user_login">login</a>`;
       }
     },
     error: function (error) {
@@ -65,7 +65,7 @@ $(document).on("click", "#resend-forgot-button", function () {
       }
       if (response.resendFailed) {
         otpResend.classList.add("valid");
-        otpResend.innerHTML = `Resend Failed Try   <a href="http://localhost:3000/submit_phone">Forgot Password</a>`;
+        otpResend.innerHTML = `Resend Failed Try   <a href="/submit_phone">Forgot Password</a>`;
       }
     },
   });
@@ -82,7 +82,7 @@ $(document).on("click", "#signup-resend-otp", function () {
       }
       if (response.resendFailed) {
         otpResend.classList.add("valid");
-        otpResend.innerHTML = `Resend Failed Try   <a href="http://localhost:3000/submit_phone">Forgot Password</a>`;
+        otpResend.innerHTML = `Resend Failed Try   <a href="/submit_phone">Forgot Password</a>`;
       }
     },
   });
@@ -112,7 +112,7 @@ $(document).ready(function () {
       success: function (_, _, response) {
         if (response.status === 200) {
           window.location.href =
-            "http://localhost:3000/user/show_profile/" + userId;
+            "/user/show_profile/" + userId;
         }
       },
       error: function (error) {
@@ -134,7 +134,7 @@ $(document).ready(function () {
       method: "GET", //to view user details
       success: function (_, _, response) {
         if (response.status === 200) {
-          window.location.href = "http://localhost:3000/product/" + productId;
+          window.location.href = "/product/" + productId;
         }
       },
       error: function (error) {
@@ -155,7 +155,7 @@ $(document).ready(function () {
       method: "GET", //to view cart details
       success: function (_, _, response) {
         if (response.status === 200) {
-          window.location.href = "http://localhost:3000/user_cart/" + userId;
+          window.location.href = "/user_cart/" + userId;
         }
       },
       error: function (error) {
@@ -389,7 +389,7 @@ $(document).ready(async function () {
         success: function (_, _, response) {
           if (response.status == 200) {
             window.location.href =
-              "http://localhost:3000/user/edit_address/" + addressId;
+              "/user/edit_address/" + addressId;
           }
         },
         error: function (error) {
@@ -413,7 +413,7 @@ $(document).ready(function () {
         success: function (_, _, response) {
           if (response.status) {
             window.location.href =
-              "http://localhost:3000/user_profile_change_password/" + userId;
+              "/user_profile_change_password/" + userId;
           }
         },
         error: function (error) {
@@ -436,7 +436,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.otpsend) {
             location.href =
-              "http://localhost:3000/user/user_change_password_submit";
+              "/user/user_change_password_submit";
           }
         },
 
@@ -469,7 +469,7 @@ function submitpassChangeotp(userId) {
           giveMsg(response.message, false);
           myModal._element.addEventListener("hidden.bs.modal", function () {
             window.location.href =
-              "http://localhost:3000/user/change_password_otp/" + response.id;
+              "/user/change_password_otp/" + response.id;
           });
         }
       },
@@ -506,7 +506,7 @@ function submitOtpassChangeform(userId) {
         giveMsg(response.message, false);
         myModal._element.addEventListener("hidden.bs.modal", function () {
           window.location.href =
-            "http://localhost:3000/user/show_profile/" + userId;
+            "/user/show_profile/" + userId;
         });
       }
     },
@@ -529,7 +529,7 @@ function profileChangePasswordForm(userId) {
         giveMsg(response.message, false);
         myModal._element.addEventListener("hidden.bs.modal", function () {
           window.location.href =
-            "http://localhost:3000/user/show_profile/" + userId;
+            "/user/show_profile/" + userId;
         });
       } else if (response.newPasswordsame) {
         giveMsg(response.message, false);
@@ -572,7 +572,7 @@ $(document).ready(function () {
       success: function (response) {
         if (response) {
           window.location.href =
-            "http://localhost:3000/user/user_add_address/" + userId;
+            "/user/user_add_address/" + userId;
         }
       },
       error: function (error) {
@@ -620,7 +620,7 @@ $(document).ready(function () {
       success: function (response) {
         if (response.redirect) {
           window.location.href =
-            "http://localhost:3000/user/user_checkout/" + userId;
+            "/user/user_checkout/" + userId;
         } else if (response.status == 500) {
           giveMsg(response.message, false);
         } else if (response.outofStock) {
@@ -829,7 +829,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.redirect) {
             window.location.href =
-              "http://localhost:3000/user/order_successfull";
+              "/user/order_successfull";
           } else if (response.outofStock) {
             giveMsg(response.message, false);
           } else if (response.codNot) {
@@ -854,7 +854,7 @@ function razorpayPayment(order) {
     currency: "INR",
     name: "Mybycylce Pvt limited",
     description: "Test Transaction",
-    image: "http://localhost:3000/images/clipart1345268.png",
+    image: "/images/clipart1345268.png",
     order_id: order.order.id,
     handler: function (response) {
       verifyPayment(response, order);
@@ -885,7 +885,7 @@ function verifyPayment(payment, order) {
     method: "POST",
     success: function (response) {
       if (response.paymentSuccess) {
-        window.location.href = "http://localhost:3000/user/order_successfull";
+        window.location.href = "/user/order_successfull";
       } else if (response.amountAdded) {
         giveMsg(response.message);
         $("#wallet-balance-amount").html(`₹${response.balance}`);
@@ -934,7 +934,7 @@ $(document).ready(function () {
       method: "GET",
       success: function (_, _, response) {
         if (response.status == 200) {
-          location.href = "http://localhost:3000/user/my-orders/" + userId;
+          location.href = "/user/my-orders/" + userId;
         } else if (response.paymentUnsuccess) {
           giveMsg("Payment Failed", false);
         }
@@ -955,7 +955,7 @@ $(document).ready(function () {
       success: function (_, _, response) {
         if (response.status == 200) {
           window.location.href =
-            "http://localhost:3000/user/view_order/" + orderId;
+            "/user/view_order/" + orderId;
         }
       },
       error: function (error) {
@@ -975,7 +975,7 @@ $(document).ready(function () {
       method: "GET",
       success: function (_, _, res) {
         if (res.status == 200) {
-          location.href = "http://localhost:3000/track_product/" + orderId;
+          location.href = "/track_product/" + orderId;
         }
       },
       error: function (error) {
@@ -1020,7 +1020,7 @@ $(document).ready(function () {
                   "hidden.bs.modal",
                   function () {
                     window.location.href =
-                      "http://localhost:3000/cancel_product";
+                      "/cancel_product";
                   }
                 );
               } else if (response.cancelNotAvailable) {
@@ -1059,7 +1059,7 @@ function submitOtp() {
           giveMsg(response.message, false);
           myModal._element.addEventListener("hidden.bs.modal", function () {
             window.location.href =
-              "http://localhost:3000/user/my-orders/" + response.id;
+              "/user/my-orders/" + response.id;
           });
         } else {
           modalMsgBody.innerHTML = response.message;
@@ -1153,7 +1153,7 @@ $(document).ready(function () {
       success: function (response) {
         if (response) {
           window.location.href =
-            "http://localhost:3000/user/edit_profile/" + userId;
+            "/user/edit_profile/" + userId;
         }
       },
       error: function (err) {
@@ -1176,13 +1176,13 @@ function submitForm(userId) {
         $(document).on("click", "#confirmAction", function () {
           giveMsg("Please wait you will be redirected ....", true);
           window.location.href =
-            "http://localhost:3000/user/email_verify/" + userId;
+            "/user/email_verify/" + userId;
         });
       } else if (response.updated) {
         giveMsg(response.message, false);
         myModal._element.addEventListener("hidden.bs.modal", function () {
           window.location.href =
-            "http://localhost:3000/user/show_profile/" + userId;
+            "/user/show_profile/" + userId;
         });
       }
     },
@@ -1216,7 +1216,7 @@ function submitVerifyOtp() {
           giveMsg(response.message, false);
           myModal._element.addEventListener("hidden.bs.modal", function () {
             window.location.href =
-              "http://localhost:3000/user/show_profile/" + response.id;
+              "/user/show_profile/" + response.id;
           });
         }
       },
@@ -1253,7 +1253,7 @@ $(document).on("click", "#logout", function () {
       success: function (_, _, response) {
         console.log(response.status);
         if (response.status === 200) {
-          window.location.href = "http://localhost:3000/user_login";
+          window.location.href = "/user_login";
         }
       },
     });
@@ -1533,12 +1533,12 @@ $(document).ready(function () {
       success: function (_, _, response) {
         if (response.status) {
           window.location.href =
-            "http://localhost:3000/user/wishlist/" + userId;
+            "/user/wishlist/" + userId;
         }
       },
       error: function (error) {
         console.log(error);
-        location.href = "http://localhost:3000/user_login";
+        location.href = "/user_login";
       },
     });
   });
@@ -1689,7 +1689,7 @@ $(document).ready(function () {
       method: "GET",
       success: function (_, _, response) {
         if (response.status == 200) {
-          location.href = "http://localhost:3000/user/wallet_history/" + userId;
+          location.href = "/user/wallet_history/" + userId;
         }
       },
       error: function (error) {
@@ -1824,7 +1824,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.redirect) {
             location.href =
-              "http://localhost:3000/user/buy_now_checkout/" + userId;
+              "/user/buy_now_checkout/" + userId;
           } else if (response.notAvail) {
             giveMsg(response.message);
           }
@@ -1866,7 +1866,7 @@ $(document).ready(function () {
         success: function (response) {
           if (response.redirect) {
             window.location.href =
-              "http://localhost:3000/user/order_successfull";
+              "/user/order_successfull";
           } else if (response.outofStock) {
             giveMsg(response.message, false);
           } else if (response.codNot) {
@@ -2041,7 +2041,7 @@ function AddMoneyrazorpayPayment(order) {
     currency: "INR",
     name: "Mybycylce Pvt limited",
     description: "Test Transaction",
-    image: "http://localhost:3000/images/clipart1345268.png",
+    image: "/images/clipart1345268.png",
     order_id: order.order.id,
     handler: function (response) {
       verifyPayment(response, order);

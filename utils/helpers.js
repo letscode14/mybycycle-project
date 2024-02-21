@@ -207,7 +207,7 @@ async function generateInvoice(Id, userId, boolean) {
 
     await fs.promises.writeFile(pdfPth, pdfBinaryData, "binary");
 
-    downloadLink = `http://localhost:3000/${pdfPth}`;
+    downloadLink = `/${pdfPth}`;
 
     const mailOptions = {
       from: process.env.EMAIL,

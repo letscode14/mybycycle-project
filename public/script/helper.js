@@ -16,25 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
     document.title = "Edit Address";
   } else if (currentURl.includes("/user/user_checkout/")) {
     document.title = "Check Out";
-  } else if (href == "http://localhost:3000/admin_panel/user_management") {
+  } else if (href == "/admin_panel/user_management") {
     document.title = "User Management";
-  } else if (href == "http://localhost:3000/admin_panel") {
+  } else if (href == "/admin_panel") {
     document.title = "Admin Dashboard";
-  } else if (href == "http://localhost:3000/admin_panel/orders") {
+  } else if (href == "/admin_panel/orders") {
     document.title = "Orders";
-  } else if (href == "http://localhost:3000/admin_panel/products") {
+  } else if (href == "/admin_panel/products") {
     document.title = "Products";
-  } else if (href == "http://localhost:3000/admin_panel/products/add_product") {
+  } else if (href == "/admin_panel/products/add_product") {
     document.title = "Add Products";
   } else if (
-    href == "http://localhost:3000/admin_panel/products/specification"
+    href == "/admin_panel/products/specification"
   ) {
     document.title = "Product Specification";
   } else if (currentURl.includes("/admin_panel/products/edit_product/")) {
     document.title = "Edit Product";
-  } else if (href == "http://localhost:3000/admin_panel/category") {
+  } else if (href == "/admin_panel/category") {
     document.title = "Category";
-  } else if (href == "http://localhost:3000/admin_panel/add_category") {
+  } else if (href == "/admin_panel/add_category") {
     document.title = "Add Category";
   } else if (currentURl.includes("/admin_panel/category/edit_category/")) {
     document.title = "Edit Category";
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.title = "Change Password";
   } else if (currentURl.includes("/user/user_change_password_submit")) {
     document.title = "Verify User";
-  } else if (href == "http://localhost:3000/home") {
+  } else if (href == "/home") {
     document.title = "Home";
   } else if (currentURl.includes("/admin_panel/coupon/add_coupon")) {
     document.title = "Add Coupon";

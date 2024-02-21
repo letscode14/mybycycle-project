@@ -17,7 +17,7 @@
         <div style="font-weight: 500; font-size:18px;" class="mb-2">QUICK LINKS</div>
 
         <div
-          onclick="window.location.href = 'http://localhost:3000/home'"
+          onclick="window.location.href = '/home'"
         >Home</div>
 
         {{#if userInfo}}
@@ -26,13 +26,13 @@
           <div data-user-id={{userInfo._id}} id="view-wishlist">Wishlist</div>
         {{else}}
           <div
-            onclick="window.location.href = 'http://localhost:3000/user_login'"
+            onclick="window.location.href = '/user_login'"
           >Wishlist</div>
           <div
-            onclick="window.location.href = 'http://localhost:3000/user_login'"
+            onclick="window.location.href = '/user_login'"
           >Cart</div>
           <div
-            onclick="window.location.href = 'http://localhost:3000/user_login'"
+            onclick="window.location.href = '/user_login'"
           >Profile</div>
         {{/if}}
 
@@ -44,9 +44,9 @@
         >SUPPORT</div>
 
         <div
-          onclick="location.href='http://localhost:3000/get_in_touch'"
+          onclick="location.href='/get_in_touch'"
         >Contact Us</div>
-        <div onclick="location.href='http://localhost:3000/about_us'">About Us</div>
+        <div onclick="location.href='/about_us'">About Us</div>
 
       </div>
       <div class="col-md-3 text-white mt-3 ps-4">
