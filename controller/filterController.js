@@ -195,7 +195,7 @@ const filterProduct = async (req, res) => {
 
 const searchProduct = async (req, res, next) => {
   const escapeRegExp = (string) => {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return string.replace(/[.*+?^${}()|[\]\\]/, "\\$&");
   };
 
   const searchProducts = async (searchTerm) => {

@@ -124,6 +124,7 @@
           class="search-bar"
           type="text"
           placeholder="search"
+          data-user-id="{{userInfo._id}}"
         />
 
         {{#if userInfo}}
@@ -225,7 +226,7 @@
           ></i>
           Cart
           {{#if count}}<span
-              class="count-res text-white"
+              class="count-res cart-count text-white"
             >{{count}}</span>{{/if}}</li>
         <li onclick="window.location.href='/list_products'"><i
             class="fa-solid fa-bicycle"

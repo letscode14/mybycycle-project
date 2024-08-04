@@ -78,8 +78,7 @@ $(document).ready(function () {
       success: function (_, _, response) {
         if (response.status === 200) {
           window.location.href =
-            "/admin_panel/products/edit_product/" +
-            productId;
+            "/admin_panel/products/edit_product/" + productId;
         }
       },
       error: function (error) {
@@ -127,8 +126,7 @@ $(document).ready(function () {
         if (response.status === 200) {
           console.log(response.status);
           window.location.href =
-            "/admin_panel/category/edit_category/" +
-            categoryId;
+            "/admin_panel/category/edit_category/" + categoryId;
         }
       },
       error: function (error) {
@@ -385,6 +383,25 @@ $(document).on("click", ".logout-button", function () {
       },
       error: function (error) {
         console.error("Error during logout:", error);
+      },
+    });
+  });
+});
+
+$(document).ready(function () {
+  $(document).on("click", "#unlist-category", function () {
+    var categoryId = $(this).data("category-id");
+    alert(categoryId);
+    $.ajax({
+      url: "/unlist_category/" + categoryId,
+      method: "PATCH",
+      success: function (response) {
+        if (response.success) {
+          giveMsg(response.message);
+        }
+      },
+      error: function (er) {
+        console.log(er);
       },
     });
   });

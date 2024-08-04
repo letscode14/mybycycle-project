@@ -8,20 +8,7 @@ const notvalidPassword = document.querySelector(".notvalid-password");
 const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+$/;
 
-form.addEventListener("submit", (event) => {
-  if (email.value.trim() !== "" && password.value.trim() !== "") {
-    if (emailRegex.test(email.value.trim())) {
-      if (passwordRegex.test(password.value.trim())) {
-      } else {
-        validateSignin(notValidEmail, event);
-      }
-    } else {
-      validateSignin(notValidEmail, event);
-    }
-  } else {
-    validateSignin(formEmpty, event);
-  }
-});
+form.addEventListener("submit", (event) => {});
 function validateSignin(notvalid, event) {
   event.preventDefault();
   notvalid.classList.add("valid");

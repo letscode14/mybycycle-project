@@ -201,6 +201,12 @@ router.patch(
   auth.isadminAuthenticated,
   adminController.deleteCoupon
 );
+
+router.patch(
+  "/unlist_category/:id",
+  auth.isadminAuthenticated,
+  adminController.unlistCategory
+);
 //admin logout route
 router.get("/admin_logout", adminController.adminLogout);
 module.exports = router;

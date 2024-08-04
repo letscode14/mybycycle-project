@@ -111,8 +111,7 @@ $(document).ready(function () {
       method: "GET", //to view user details
       success: function (_, _, response) {
         if (response.status === 200) {
-          window.location.href =
-            "/user/show_profile/" + userId;
+          window.location.href = "/user/show_profile/" + userId;
         }
       },
       error: function (error) {
@@ -388,8 +387,7 @@ $(document).ready(async function () {
         method: "GET", //to get edit page of user
         success: function (_, _, response) {
           if (response.status == 200) {
-            window.location.href =
-              "/user/edit_address/" + addressId;
+            window.location.href = "/user/edit_address/" + addressId;
           }
         },
         error: function (error) {
@@ -412,8 +410,7 @@ $(document).ready(function () {
         method: "GET",
         success: function (_, _, response) {
           if (response.status) {
-            window.location.href =
-              "/user_profile_change_password/" + userId;
+            window.location.href = "/user_profile_change_password/" + userId;
           }
         },
         error: function (error) {
@@ -435,8 +432,7 @@ $(document).ready(function () {
         method: "GET",
         success: function (response) {
           if (response.otpsend) {
-            location.href =
-              "/user/user_change_password_submit";
+            location.href = "/user/user_change_password_submit";
           }
         },
 
@@ -468,8 +464,7 @@ function submitpassChangeotp(userId) {
         } else if (response.success) {
           giveMsg(response.message, false);
           myModal._element.addEventListener("hidden.bs.modal", function () {
-            window.location.href =
-              "/user/change_password_otp/" + response.id;
+            window.location.href = "/user/change_password_otp/" + response.id;
           });
         }
       },
@@ -505,8 +500,7 @@ function submitOtpassChangeform(userId) {
       } else if (response.redirect) {
         giveMsg(response.message, false);
         myModal._element.addEventListener("hidden.bs.modal", function () {
-          window.location.href =
-            "/user/show_profile/" + userId;
+          window.location.href = "/user/show_profile/" + userId;
         });
       }
     },
@@ -528,8 +522,7 @@ function profileChangePasswordForm(userId) {
       } else if (response.success) {
         giveMsg(response.message, false);
         myModal._element.addEventListener("hidden.bs.modal", function () {
-          window.location.href =
-            "/user/show_profile/" + userId;
+          window.location.href = "/user/show_profile/" + userId;
         });
       } else if (response.newPasswordsame) {
         giveMsg(response.message, false);
@@ -571,8 +564,7 @@ $(document).ready(function () {
       method: "GET",
       success: function (response) {
         if (response) {
-          window.location.href =
-            "/user/user_add_address/" + userId;
+          window.location.href = "/user/user_add_address/" + userId;
         }
       },
       error: function (error) {
@@ -619,8 +611,7 @@ $(document).ready(function () {
       method: "POST", //to get checkout
       success: function (response) {
         if (response.redirect) {
-          window.location.href =
-            "/user/user_checkout/" + userId;
+          window.location.href = "/user/user_checkout/" + userId;
         } else if (response.status == 500) {
           giveMsg(response.message, false);
         } else if (response.outofStock) {
@@ -828,8 +819,7 @@ $(document).ready(function () {
         data: formData,
         success: function (response) {
           if (response.redirect) {
-            window.location.href =
-              "/user/order_successfull";
+            window.location.href = "/user/order_successfull";
           } else if (response.outofStock) {
             giveMsg(response.message, false);
           } else if (response.codNot) {
@@ -954,8 +944,7 @@ $(document).ready(function () {
       method: "GET",
       success: function (_, _, response) {
         if (response.status == 200) {
-          window.location.href =
-            "/user/view_order/" + orderId;
+          window.location.href = "/user/view_order/" + orderId;
         }
       },
       error: function (error) {
@@ -1019,8 +1008,7 @@ $(document).ready(function () {
                 myModal._element.addEventListener(
                   "hidden.bs.modal",
                   function () {
-                    window.location.href =
-                      "/cancel_product";
+                    window.location.href = "/cancel_product";
                   }
                 );
               } else if (response.cancelNotAvailable) {
@@ -1058,8 +1046,7 @@ function submitOtp() {
         if (response.cancelled) {
           giveMsg(response.message, false);
           myModal._element.addEventListener("hidden.bs.modal", function () {
-            window.location.href =
-              "/user/my-orders/" + response.id;
+            window.location.href = "/user/my-orders/" + response.id;
           });
         } else {
           modalMsgBody.innerHTML = response.message;
@@ -1152,8 +1139,7 @@ $(document).ready(function () {
       method: "GET",
       success: function (response) {
         if (response) {
-          window.location.href =
-            "/user/edit_profile/" + userId;
+          window.location.href = "/user/edit_profile/" + userId;
         }
       },
       error: function (err) {
@@ -1175,14 +1161,12 @@ function submitForm(userId) {
         giveAlert(response.message);
         $(document).on("click", "#confirmAction", function () {
           giveMsg("Please wait you will be redirected ....", true);
-          window.location.href =
-            "/user/email_verify/" + userId;
+          window.location.href = "/user/email_verify/" + userId;
         });
       } else if (response.updated) {
         giveMsg(response.message, false);
         myModal._element.addEventListener("hidden.bs.modal", function () {
-          window.location.href =
-            "/user/show_profile/" + userId;
+          window.location.href = "/user/show_profile/" + userId;
         });
       }
     },
@@ -1215,8 +1199,7 @@ function submitVerifyOtp() {
         } else if (response.success) {
           giveMsg(response.message, false);
           myModal._element.addEventListener("hidden.bs.modal", function () {
-            window.location.href =
-              "/user/show_profile/" + response.id;
+            window.location.href = "/user/show_profile/" + response.id;
           });
         }
       },
@@ -1532,8 +1515,7 @@ $(document).ready(function () {
       method: "GET",
       success: function (_, _, response) {
         if (response.status) {
-          window.location.href =
-            "/user/wishlist/" + userId;
+          window.location.href = "/user/wishlist/" + userId;
         }
       },
       error: function (error) {
@@ -1596,6 +1578,8 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#search-bar").on("input", function () {
     var value = $("#search-bar").val();
+    var userId = $(this).data("user-id");
+
     $.ajax({
       url: "/user/search_products",
       method: "POST",
@@ -1653,6 +1637,11 @@ $(document).ready(function () {
                 <div class="d-flex justify-content-end mt-2">
                   <button
                     id="buynow-button"
+                    data-product-id="${items._id}"
+                    data-product-frame="${items.frameSize}"
+                    data-product-color="${items.color}"
+                    data-user-id = "${userId}"
+                    data-product-quantity="${items.quantity}"
                     class="btn btn-danger d-flex align-items-center justify-content-center"
                   >
                     <span class="buy-now">BUY NOW</span>
@@ -1823,8 +1812,7 @@ $(document).ready(function () {
         data: requestData,
         success: function (response) {
           if (response.redirect) {
-            location.href =
-              "/user/buy_now_checkout/" + userId;
+            location.href = "/user/buy_now_checkout/" + userId;
           } else if (response.notAvail) {
             giveMsg(response.message);
           }
@@ -1865,8 +1853,7 @@ $(document).ready(function () {
         data: formData,
         success: function (response) {
           if (response.redirect) {
-            window.location.href =
-              "/user/order_successfull";
+            window.location.href = "/user/order_successfull";
           } else if (response.outofStock) {
             giveMsg(response.message, false);
           } else if (response.codNot) {

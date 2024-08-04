@@ -71,6 +71,7 @@ const userManagement = async (req, res, next) => {
   try {
     const users = await userDb.userCollection.find({}).lean();
     const userData = convertDate(users);
+
     res.status(200).render("admin/admin_user_panel", {
       adminUser: true,
       userData,
@@ -1582,7 +1583,24 @@ const adminLogout = (req, res, next) => {
   }
 };
 
+const unlistCategory = async (req, res, next) => {
+  try {
+    const product = await productDb.productCollection.updateMany(
+      {
+        category: new ObjectId(req.params.id),
+      },
+      { $set: { isDeleted: false } }
+    );
+    if (product) {
+      res.json({ success: true, message: "Category unlisted SuccessFully" });
+    }
+  } catch (er) {
+    next(er);
+  }
+};
+
 module.exports = {
+  unlistCategory,
   printSales,
   deleteCoupon,
   addCoupon,

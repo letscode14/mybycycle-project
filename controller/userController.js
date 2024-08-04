@@ -41,8 +41,8 @@ const userRegistration = async (req, res, next) => {
   const data = {
     fname: req.body.fname,
     lname: req.body.lname,
-    email: req.body.email,
-    password: await bcrypt.hash(req.body.password, 10),
+    email: req.body.email.trim(),
+    password: await bcrypt.hash(req.body.password.trim(), 10),
     phone: req.body.phone,
   };
 
@@ -89,6 +89,15 @@ const submitSignupotp = async (req, res, next) => {
             { userId: new ObjectId(userInserted[0]._id) },
             {
               $set: { userId: new ObjectId(userInserted[0]._id) },
+            },
+            { upsert: true }
+          );
+          await cartDb.cartCollection.updateOne(
+            {
+              userId: new ObjectId(userInserted[0]._id),
+            },
+            {
+              $set: { products: [] },
             },
             { upsert: true }
           );
@@ -533,8 +542,7 @@ const getPage = async (req, res, next) => {
   const product = await productDb.productCollection
     .find({ isDeleted: false })
     .lean();
-
-  res.status(200).render("user/user_products", { user: true, product });
+  res.redirect("/home");
 };
 
 const getProductDetails = async (req, res, next) => {

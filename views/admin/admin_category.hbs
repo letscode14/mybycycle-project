@@ -1,6 +1,6 @@
 <section class="container-user-panel d-flex">
   <div class="admin-navbar">
-   <div class="sticky-top" style="top: 2%;">
+    <div class="sticky-top" style="top: 2%;">
       <div class="dashboard" onclick="navigatetoPages('dashboard')">
         <i class="fa fa-th icons" aria-hidden="true"></i>
         <span class="nav-category">DASHBOARD</span>
@@ -86,7 +86,11 @@
                   id="category-delete-icon"
                   class="text-danger fa-solid fa-trash"
                   data-category-id={{this._id}}
-                ></i></button></td>
+                ></i></button>
+              <button
+                id="unlist-category"
+                data-category-id="{{this._id}}"
+              >u</button></td>
           </tr>
         {{/each}}
       </tbody>

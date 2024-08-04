@@ -101,9 +101,9 @@ app.use((req, res) => {
 });
 //error handling middleware
 app.use((err, req, res, next) => {
-  res.status(500).send(err.stack);
+  res.status(500).render("500");
 });
 
 app.listen(process.env.PORT, () => {
-  console.log("server is running");
+  console.log("server is running", process.env.PORT);
 });
