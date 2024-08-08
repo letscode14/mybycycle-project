@@ -825,6 +825,8 @@ $(document).ready(function () {
           } else if (response.codNot) {
             giveMsg(response.message, false);
           } else {
+            console.log(response);
+
             razorpayPayment(response);
           }
         },
@@ -839,7 +841,7 @@ $(document).ready(function () {
 //function to complete the payment
 function razorpayPayment(order) {
   var options = {
-    key: "rzp_test_wJfLNTQmOYjqPY",
+    key: "rzp_test_VYllCxoH0FcsQA",
     amount: order.order.amount,
     currency: "INR",
     name: "Mybycylce Pvt limited",
@@ -2023,7 +2025,7 @@ $(document).ready(function () {
 //function to add money to the wallet
 function AddMoneyrazorpayPayment(order) {
   var options = {
-    key: "rzp_test_wJfLNTQmOYjqPY",
+    key: "rzp_test_VYllCxoH0FcsQA",
     amount: order.order.amount,
     currency: "INR",
     name: "Mybycylce Pvt limited",
